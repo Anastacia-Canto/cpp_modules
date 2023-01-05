@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ansilva- <ansilva-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 21:48:54 by anastacia         #+#    #+#             */
-/*   Updated: 2023/01/05 12:18:03 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/01/05 18:32:55 by ansilva-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 # define _PHONEBOOK_HPP_
 
 #include <iostream>
+#include "../inc/Contact.hpp"
 
 class PhoneBook{
+
+private:
+	Contact* contacts[8];
 
 public:
 

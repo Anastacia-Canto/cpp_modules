@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ansilva- <ansilva-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 21:44:29 by anastacia         #+#    #+#             */
-/*   Updated: 2023/01/03 21:45:28 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/01/05 18:05:37 by ansilva-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,18 @@
 
 class Contact{
 	
+private:
+	char	*firstName;
+	char	*lastName;
+	char	*nickName;
+	char	*phoneNumber;
+	char	*secret;
+
+public:
+	Contact (void);
+	Contact (char *firstName, char *lastName, char *nickName, char *phoneNumber, char *secret);
+	~Contact ( void );
+
 };
 
 #endif
