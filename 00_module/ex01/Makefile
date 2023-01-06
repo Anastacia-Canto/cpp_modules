@@ -6,15 +6,13 @@
 #    By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 17:28:59 by anastacia         #+#    #+#              #
-#    Updated: 2023/01/05 12:20:08 by anastacia        ###   ########.fr        #
+#    Updated: 2023/01/06 17:51:21 by anastacia        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-(VERBOSE).SILENT:
-
 NAME = phonebook
 
-SRC = ./src/main ./src/PhoneBook
+SRC = ./src/main ./src/PhoneBook ./src/Contact
 
 INC = -I ./inc
 

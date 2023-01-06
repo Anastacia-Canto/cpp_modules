@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 21:48:54 by anastacia         #+#    #+#             */
-/*   Updated: 2023/01/06 10:27:47 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/01/06 17:57:29 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@ class PhoneBook{
 
 private:
 	Contact mContacts[8];
+	int		mIndex;
 
 public:
 
 	PhoneBook( void ); //constructor
 	~PhoneBook( void ); //destructor
 
+	void	addContact ( void );
+	void	searchContact ( void );
+	void	exitProg ( void );
 };
 
 #endif
