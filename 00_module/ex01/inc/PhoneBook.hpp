@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ansilva- <ansilva-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 21:48:54 by anastacia         #+#    #+#             */
-/*   Updated: 2023/01/05 18:32:55 by ansilva-         ###   ########.fr       */
+/*   Updated: 2023/01/06 10:27:47 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class PhoneBook{
 
 private:
-	Contact* contacts[8];
+	Contact mContacts[8];
 
 public:
 

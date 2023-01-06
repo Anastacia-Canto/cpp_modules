@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:46:31 by anastacia         #+#    #+#             */
-/*   Updated: 2023/01/05 11:10:22 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/01/06 10:39:46 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../inc/PhoneBook.hpp"
 
 int	main(){
-	PhoneBook	instance;
+	PhoneBook	pBook;
+
 	return 0;
 }
