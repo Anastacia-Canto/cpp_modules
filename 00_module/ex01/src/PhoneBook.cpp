@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:01:27 by anastacia         #+#    #+#             */
-/*   Updated: 2023/01/06 18:26:34 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/01/10 22:02:46 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ PhoneBook::PhoneBook ( void ){
 PhoneBook::~PhoneBook( void ){}
 
 void	PhoneBook::addContact ( void ){
+	if (this->mIndex > 7)
+		this->mIndex = 0;
 	std::cout << "First name: ";
 	std::string name;
 	std::cin >> name;
@@ -41,12 +43,16 @@ void	PhoneBook::addContact ( void ){
 	std::string secret;
 	std::cin >> secret;
 	this->mContacts[mIndex].setSecret(secret);
-	mIndex++;
+	this->mIndex++;
 	return ;
 }
 
-void	PhoneBook::searchContact ( void ){
-
+void	PhoneBook::searchContact ( int index ){
+	if (index < 0 || index > 7){
+		std::cout << "Invalid index. It should be a number between 0 and 7." << std::endl;
+		return ;
+	}
+	mContacts[index].printContact();
 }
 
 void	PhoneBook::exitProg ( void ){

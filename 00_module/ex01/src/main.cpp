@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:46:31 by anastacia         #+#    #+#             */
-/*   Updated: 2023/01/06 18:22:32 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/01/10 21:58:13 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,12 @@ int	main(){
 		if (command.compare("ADD") == 0)
 			pBook.addContact();
 		else if (command.compare("SEARCH") == 0)
-			pBook.searchContact();
+		{
+			int	index;
+			std::cout << "Enter a contact index: " << std::endl;
+			std::cin >> index;
+			pBook.searchContact(index);
+		}
 		else if (command.compare("EXIT") == 0)
 			std::cout << "Goodbye" << std::endl;
 		else

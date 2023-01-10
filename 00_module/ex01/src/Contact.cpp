@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:00:04 by anastacia         #+#    #+#             */
-/*   Updated: 2023/01/06 10:38:23 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/01/10 21:55:13 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,3 +53,12 @@ std::string	Contact::getPhoneNumber ( void ){
 std::string	Contact::getSecret ( void ){
 	return this->mSecret;
 }
+
+void	Contact::printContact ( void ){
+	std::cout << "First name: " << this->getFirstName() << std::endl;
+	std::cout << "Last name: " << this->getLastName() << std::endl;
+	std::cout << "Nickname: " << this->getNickname() << std::endl;
+	std::cout << "Phone number: " << this->getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret: " << this->getSecret() << std::endl;
+}
+
