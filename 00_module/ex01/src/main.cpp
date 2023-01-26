@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:46:31 by anastacia         #+#    #+#             */
-/*   Updated: 2023/01/10 21:58:13 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/01/26 12:36:42 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,5 @@ int	main(){
 			std::cout << "Invalid command. Type ADD, SEARCH or EXIT." << std::endl;
 	} while (command.compare("EXIT") != 0);
 		
-	pBook.exitProg();
 	return 0;
 }

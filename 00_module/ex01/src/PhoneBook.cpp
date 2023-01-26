@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:01:27 by anastacia         #+#    #+#             */
-/*   Updated: 2023/01/10 22:02:46 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/01/26 12:36:33 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void	PhoneBook::searchContact ( int index ){
 		std::cout << "Invalid index. It should be a number between 0 and 7." << std::endl;
 		return ;
 	}
+	if (index >= mIndex){ //pensar sobre depois de já ter 8 contatos
+		std::cout << "Empty index" << std::endl;
+		return ;
+	}
 	mContacts[index].printContact();
-}
-
-void	PhoneBook::exitProg ( void ){
-
 }
