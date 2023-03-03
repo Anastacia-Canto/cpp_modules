@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ansilva- <ansilva-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:01:27 by anastacia         #+#    #+#             */
-/*   Updated: 2023/01/26 12:36:33 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/03/03 12:30:09 by ansilva-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,34 @@ void	PhoneBook::addContact ( void ){
 	return ;
 }
 
-void	PhoneBook::searchContact ( int index ){
-	if (index < 0 || index > 7){
-		std::cout << "Invalid index. It should be a number between 0 and 7." << std::endl;
+void	PhoneBook::searchContact ( void ){
+	std::cout << "|Index     |First Name|Last Name |Nickname  |" << std::endl;
+	int	index;
+	std::cout << "Enter a contact index between 1 and 8: " << std::endl;
+	std::cin >> index;
+	while(1)
+	{
+		if(std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore(256,'\n');
+			std::cout << "You have entered wrong input" << std::endl;
+			std::cout << "Enter a contact index between 1 and 8: " << std::endl;
+			std::cin >> index;
+		}
+		if(!std::cin.fail())
+			break;
+	}
+	if (index >= 1 && index <= 8){
+		index--;
+		if (index >= mIndex){ //pensar sobre depois de já ter 8 contatos
+			std::cout << "Empty index" << std::endl;
+			return ;
+		}
+		mContacts[index].printContact();
+	}
+	else{
+		std::cout << "Invalid index. It should be a number between 1 and 8." << std::endl;
 		return ;
 	}
-	if (index >= mIndex){ //pensar sobre depois de já ter 8 contatos
-		std::cout << "Empty index" << std::endl;
-		return ;
-	}
-	mContacts[index].printContact();
 }
