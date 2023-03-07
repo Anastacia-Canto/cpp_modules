@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:00:04 by anastacia         #+#    #+#             */
-/*   Updated: 2023/01/10 21:55:13 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/03/07 09:21:32 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,40 +18,40 @@ Contact::Contact(void){}
 Contact::~Contact(void){}
 
 void	Contact::setFirstName ( std::string name ) {
-	this->mFirstName = name;
+	this->_firstName = name;
 }
 
 void	Contact::setLastName ( std::string surname ){
-	this->mLastName = surname;
+	this->_lastName = surname;
 }
 
 void	Contact::setNickname ( std::string nickname ){
-	this->mNickname = nickname;
+	this->_nickname = nickname;
 }
 void	Contact::setPhoneNumber ( std::string number ){
-	this->mPhoneNumber = number;
+	this->_phoneNumber = number;
 }
 void	Contact::setSecret ( std::string secret ){
-	this->mSecret = secret;
+	this->_secret = secret;
 }
 
 
 std::string	Contact::getFirstName ( void ) {
-	return this->mFirstName;
+	return this->_firstName;
 }
 
 std::string	Contact::getLastName ( void ){
-	return this->mLastName;
+	return this->_lastName;
 }
 
 std::string	Contact::getNickname ( void ){
-	return this->mNickname;
+	return this->_nickname;
 }
 std::string	Contact::getPhoneNumber ( void ){
-	return this->mPhoneNumber;
+	return this->_phoneNumber;
 }
 std::string	Contact::getSecret ( void ){
-	return this->mSecret;
+	return this->_secret;
 }
 
 void	Contact::printContact ( void ){

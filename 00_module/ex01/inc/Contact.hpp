@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 21:44:29 by anastacia         #+#    #+#             */
-/*   Updated: 2023/03/07 09:07:11 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/03/07 09:19:01 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 class Contact{
 	
 private:
-	std::string	mFirstName;
-	std::string	mLastName;
-	std::string	mNickname;
-	std::string	mPhoneNumber;
-	std::string	mSecret;
+	std::string	_firstName;
+	std::string	_lastName;
+	std::string	_nickname;
+	std::string	_phoneNumber;
+	std::string	_secret;
 	
 public:
 	Contact ( void );
