@@ -6,13 +6,13 @@
 #    By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 17:28:59 by anastacia         #+#    #+#              #
-#    Updated: 2023/03/07 17:58:29 by anastacia        ###   ########.fr        #
+#    Updated: 2023/03/07 18:44:20 by anastacia        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = zombie
 
-SRC = ./src/main ./src/PhoneBook ./src/Contact
+SRC = ./src/main ./src/newZombie ./src/randomChump ./src/Zombie
 
 INC = -I ./inc
 
