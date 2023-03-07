@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 21:44:29 by anastacia         #+#    #+#             */
-/*   Updated: 2023/01/10 21:51:27 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/03/07 09:07:11 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ private:
 	std::string	mNickname;
 	std::string	mPhoneNumber;
 	std::string	mSecret;
-
+	
 public:
 	Contact ( void );
 	~Contact ( void );
