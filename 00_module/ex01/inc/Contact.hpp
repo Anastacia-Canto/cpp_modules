@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 21:44:29 by anastacia         #+#    #+#             */
-/*   Updated: 2023/03/07 09:19:01 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/03/07 09:43:10 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CONTACT_H
 
 #include <string>
+#include <iostream>
 
 class Contact{
 	

@@ -6,12 +6,10 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:01:27 by anastacia         #+#    #+#             */
-/*   Updated: 2023/03/07 09:20:02 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/03/07 10:10:05 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
 #include "../inc/PhoneBook.hpp"
 
 PhoneBook::PhoneBook ( void ){
@@ -48,7 +46,9 @@ void	PhoneBook::addContact ( void ){
 }
 
 void	PhoneBook::searchContact ( void ){
-	std::cout << "|Index     |First Name|Last Name |Nickname  |" << std::endl;
+	for (int i = 0; i < 8; i++){
+		this->_printOnSearch(i);
+	}
 	int	index;
 	std::cout << "Enter a contact index between 1 and 8: " << std::endl;
 	std::cin >> index;
@@ -67,7 +67,9 @@ void	PhoneBook::searchContact ( void ){
 	}
 	if (index >= 1 && index <= 8){
 		index--;
-		if (index >= _index){ 
+		if (this->_contacts[index].getFirstName().empty() ||
+			this->_contacts[index].getLastName().empty() ||
+			this->_contacts[index].getNickname().empty()){ 
 			std::cout << "Empty index" << std::endl;
 			return ;
 		}
@@ -77,4 +79,25 @@ void	PhoneBook::searchContact ( void ){
 		std::cout << "Invalid index. It should be a number between 1 and 8." << std::endl;
 		return ;
 	}
+}
+
+std::string	PhoneBook::_formatString ( std::string str ){
+	if (str.length() > 10){
+		return str.substr(0, 9) + ".";
+	}
+	return str;
+}
+
+void	PhoneBook::_printOnSearch ( int index ){
+	if (this->_contacts[index].getFirstName().empty() ||
+		this->_contacts[index].getLastName().empty() ||
+		this->_contacts[index].getNickname().empty()){
+		return ;
+	}
+	
+	std::cout << "|" <<std::setw(10) << index + 1 << std::flush;
+	std::cout << "|" <<std::setw(10) << this->_formatString(this->_contacts[index].getFirstName()) << std::flush;
+	std::cout << "|" <<std::setw(10) << this->_formatString(this->_contacts[index].getLastName()) << std::flush;
+	std::cout << "|" <<std::setw(10) << this->_formatString(this->_contacts[index].getNickname()) << std::flush;
+	std::cout << "|" << std::endl;
 }

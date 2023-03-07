@@ -6,11 +6,10 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:00:04 by anastacia         #+#    #+#             */
-/*   Updated: 2023/03/07 09:21:32 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/03/07 09:50:23 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "../inc/Contact.hpp"
 
 Contact::Contact(void){}
