@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:01:27 by anastacia         #+#    #+#             */
-/*   Updated: 2023/03/07 10:10:05 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/03/07 17:36:44 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	PhoneBook::searchContact ( void ){
 		this->_printOnSearch(i);
 	}
 	int	index;
-	std::cout << "Enter a contact index between 1 and 8: " << std::endl;
+	std::cout << "Enter a contact index: " << std::endl;
 	std::cin >> index;
 	while(1)
 	{
@@ -59,7 +59,7 @@ void	PhoneBook::searchContact ( void ){
 			std::cin.clear();
 			std::cin.ignore(256,'\n');
 			std::cout << "You have entered wrong input" << std::endl;
-			std::cout << "Enter a contact index between 1 and 8: " << std::endl;
+			std::cout << "Enter a contact index: " << std::endl;
 			std::cin >> index;
 		}
 		if(!std::cin.fail())

@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:46:31 by anastacia         #+#    #+#             */
-/*   Updated: 2023/03/07 09:32:07 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/03/07 17:39:40 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 int	main(){
 	PhoneBook	pBook;
 
+	std::cout << "Welcome to your awesome PhoneBook!" << std::endl;
+	std::cout << "----------------------------------" << std::endl;
+	
 	std::string	command;
 	do {
 		std::cout << "Do you wanna ADD, SEARCH or EXIT" << std::endl;
