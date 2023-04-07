@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 18:09:07 by anastacia         #+#    #+#             */
-/*   Updated: 2023/03/10 18:12:15 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/04/07 18:41:37 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <string>
 #include <iostream>
+#include <map>
 
 class Harl{
 
@@ -29,9 +30,9 @@ class Harl{
 		Harl( void );
 		~Harl( void );
 		void	complain( std::string level);
-
+		typedef void (Harl::*ptr)();
+		static ptr	func[4];
 
 };
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 18:12:50 by anastacia         #+#    #+#             */
-/*   Updated: 2023/03/10 18:18:13 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/04/07 18:52:41 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,18 @@ void	Harl::error( void ){
 }
 
 
-void	complain( std::string level){
-	
-	
+Harl::ptr Harl::func[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+
+
+void	Harl::complain( std::string level){
+	std::string names[4] = {"debug", "info", "warning", "error"};
+	ptr	p;
+	for (int i = 0; i < 4; i++){
+		if (!level.compare(names[i])){
+			p = this->func[i];
+			(this->*p)();
+			return ;
+		}
+	}
+	std::cout << "What are you talking about???" << std::endl;
 }
