@@ -67,9 +67,7 @@ void	PhoneBook::searchContact ( void ){
 	}
 	if (index >= 1 && index <= 8){
 		index--;
-		if (this->_contacts[index].getFirstName().empty() ||
-			this->_contacts[index].getLastName().empty() ||
-			this->_contacts[index].getNickname().empty()){ 
+		if (this->_contacts[index].getFirstName().empty()){ 
 			std::cout << "Empty index" << std::endl;
 			return ;
 		}
@@ -89,9 +87,7 @@ std::string	PhoneBook::_formatString ( std::string str ){
 }
 
 void	PhoneBook::_printOnSearch ( int index ){
-	if (this->_contacts[index].getFirstName().empty() ||
-		this->_contacts[index].getLastName().empty() ||
-		this->_contacts[index].getNickname().empty()){
+	if (this->_contacts[index].getFirstName().empty()){
 		return ;
 	}
 	
