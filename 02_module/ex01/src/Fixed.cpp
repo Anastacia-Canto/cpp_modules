@@ -16,14 +16,12 @@ Fixed::Fixed( void ){
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed ( const int intNum ){
+Fixed::Fixed ( const int intNum ) : _fixed(intNum){
 	std::cout << "Int constructor called" << std::endl;
-	this->_fixed = intNum;
 }
 
-Fixed::Fixed ( const float floatNum ){
+Fixed::Fixed ( const float floatNum ) : _fixed(std::roundf(floatNum * (1 << _fractional))){
 	std::cout << "Float constructor called" << std::endl;
-	this->_fixed = floatNum;
 }
 
 Fixed::~Fixed( void ){
@@ -54,10 +52,5 @@ void	Fixed::setRawBits( int const raw ){
 }
 
 // float	Fixed::toFloat( void ) const{
-
+// 	std::cout << this->_fixe;
 // }
-
-std::ostream & operator<<(std::ostream & out, Fixed const & rhs){
-	out << rhs;
-	return out;
-}
