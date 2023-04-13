@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ansilva- <ansilva-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 12:28:36 by anastacia         #+#    #+#             */
-/*   Updated: 2023/03/10 17:48:08 by anastacia        ###   ########.fr       */
+/*   Updated: 2023/04/13 10:32:07 by ansilva-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	test_prog( std::string filename, std::string s1, std::string s2){
 
 int	main(int argc, char **argv){
 
-	if (argc == 4){
+	std::string target = argv[2];
+	if (argc == 4 && !target.empty()){
 		Dolly dolly(argv[1]);
 		dolly.replace(argv[2], argv[3]);
 
