@@ -6,7 +6,7 @@
 /*   By: ansilva- <ansilva-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:05:05 by ansilva-          #+#    #+#             */
-/*   Updated: 2023/04/13 11:24:53 by ansilva-         ###   ########.fr       */
+/*   Updated: 2023/04/14 10:13:18 by ansilva-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <string>
 
 class	Fixed{
 
