@@ -10,37 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CLAPTRAP_HPP_
-# define _CLAPTRAP_HPP_
+#ifndef _FRAGTRAP_HPP_
+# define _FRAGTRAP_HPP_
 
-#include <iostream>
-#include <string>
+#include "../inc/ClapTrap.hpp"
 
-class ClapTrap {
-	
-	private:
-		std::string _name;
-		int			_hitPts;
-		int			_energyPts;
-		int			_attackDmg;
-		
+class FragTrap: virtual public ClapTrap {
 
+    public:
+        FragTrap( void );
+        FragTrap( std::string name );
+        ~FragTrap( void );
+        void highFiveGuys( void );
+        void attack(const std::string& target);
 
-	public:
-		ClapTrap( std::string name );
-		ClapTrap( const ClapTrap &src );
-		~ClapTrap( void );
-		ClapTrap & operator=( ClapTrap const & rhs );
-		
-		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
-
-		std::string getName( void ) const;
-		int getHitPts( void ) const;
-		int getEnergyPts( void ) const;
-		int getAttackDmg( void ) const;
-	
 };
 
 

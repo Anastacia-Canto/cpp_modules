@@ -10,38 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CLAPTRAP_HPP_
-# define _CLAPTRAP_HPP_
+#ifndef _DIAMONDTRAP_HPP_
+# define _DIAMONDTRAP_HPP_
 
-#include <iostream>
-#include <string>
+#include "../inc/ClapTrap.hpp"
+#include "../inc/FragTrap.hpp"
+#include "../inc/ScavTrap.hpp"
 
-class ClapTrap {
-	
-	private:
-		std::string _name;
-		int			_hitPts;
-		int			_energyPts;
-		int			_attackDmg;
-		
+class DiamondTrap: public FragTrap, public ScavTrap {
 
+    private:
+        std::string name;
 
-	public:
-		ClapTrap( std::string name );
-		ClapTrap( const ClapTrap &src );
-		~ClapTrap( void );
-		ClapTrap & operator=( ClapTrap const & rhs );
-		
-		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
-
-		std::string getName( void ) const;
-		int getHitPts( void ) const;
-		int getEnergyPts( void ) const;
-		int getAttackDmg( void ) const;
-	
+    public:
+        DiamondTrap( std::string name );
+        ~DiamondTrap( void );
+        using ScavTrap::attack;
+        void whoAmI( void );
 };
-
 
 #endif

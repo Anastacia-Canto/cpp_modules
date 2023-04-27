@@ -11,13 +11,19 @@
 /* ************************************************************************** */
 
 #include "../inc/ClapTrap.hpp"
+#include "../inc/ScavTrap.hpp"
 
 int	main( void ) {
 	ClapTrap kiki = ClapTrap("Kiki");
+	ScavTrap caca = ScavTrap("Caca");
 	
 	kiki.takeDamage(10);
 	kiki.attack("Bubu");
 	kiki.beRepaired(10);
+	caca.takeDamage(10);
+	caca.attack("Bubu");
+	caca.beRepaired(10);
+	caca.guardGate();
 	
 	return 0;
 }

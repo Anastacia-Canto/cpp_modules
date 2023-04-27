@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anastacia <anastacia@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 08:26:46 by anastacia         #+#    #+#             */
-/*   Updated: 2023/04/25 08:29:25 by anastacia        ###   ########.fr       */
+/*   Created: 2023/04/24 20:55:52 by anastacia         #+#    #+#             */
+/*   Updated: 2023/04/25 08:26:27 by anastacia        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef _SCAVTRAP_HPP_
+# define _SCAVTRAP_HPP_
+
+#include <iostream>
+#include <string>
 #include "../inc/ClapTrap.hpp"
 
-int	main( void ) {
-	ClapTrap kiki = ClapTrap("Kiki");
-	
-	kiki.takeDamage(10);
-	kiki.attack("Bubu");
-	kiki.beRepaired(10);
-	
-	return 0;
-}
+class ScavTrap: public ClapTrap {
+
+    public:
+        ScavTrap( std::string name );
+        ~ScavTrap( void );
+        void guardGate( void );
+        void attack( const std::string& target );
+};
+
+#endif

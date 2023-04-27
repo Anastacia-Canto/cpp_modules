@@ -10,38 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CLAPTRAP_HPP_
-# define _CLAPTRAP_HPP_
+#include "../inc/DiamondTrap.hpp"
 
-#include <iostream>
-#include <string>
+DiamondTrap::DiamondTrap( std::string name ) : name(name) {
+    ClapTrap::name = name.append("_clap_name");
+    this->hitPts = FragTrap::hitPts;
+    this->energyPts = ScavTrap::energyPts;
+    this->attackDmg = FragTrap::attackDmg;
+    std::cout << "DiamondTrap " << this->name << " was created." << std::endl;
+}
 
-class ClapTrap {
-	
-	private:
-		std::string _name;
-		int			_hitPts;
-		int			_energyPts;
-		int			_attackDmg;
-		
+DiamondTrap::~DiamondTrap( void ) {
+    std::cout << "DiamondTrap " << this->name << " was destroyed." << std::endl;
+}
 
-
-	public:
-		ClapTrap( std::string name );
-		ClapTrap( const ClapTrap &src );
-		~ClapTrap( void );
-		ClapTrap & operator=( ClapTrap const & rhs );
-		
-		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
-
-		std::string getName( void ) const;
-		int getHitPts( void ) const;
-		int getEnergyPts( void ) const;
-		int getAttackDmg( void ) const;
-	
-};
-
-
-#endif
+void DiamondTrap::whoAmI( void ) {
+    if (this->hitPts <= 0 || this->energyPts <= 0) {
+		std::cout << this->name << " has no hit or energy points." << std::endl;
+		return ;
+	}
+    std::cout << "DiamondTrap name is " << this->name
+    << " and its ClapTrap name is " << ClapTrap::name << std::endl;
+}
