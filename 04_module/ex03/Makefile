@@ -1,7 +1,7 @@
 
-NAME = animal
+NAME = materia
 
-SRC = ./src/main ./src/Animal ./src/Dog ./src/Cat ./src/WrongCat ./src/WrongAnimal 
+SRC = ./src/main ./src/AMateria ./src/Ice ./src/Cure ./src/Character ./src/MateriaSource
 
 INC = -I ./inc
 

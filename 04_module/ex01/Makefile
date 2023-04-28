@@ -1,7 +1,7 @@
 
 NAME = animal
 
-SRC = ./src/main ./src/Animal ./src/Dog ./src/Cat ./src/WrongCat ./src/WrongAnimal 
+SRC = ./src/main ./src/Animal ./src/Dog ./src/Cat ./src/WrongCat ./src/WrongAnimal ./src/Brain
 
 INC = -I ./inc
 
