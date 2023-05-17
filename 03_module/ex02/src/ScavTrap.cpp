@@ -23,6 +23,18 @@ ScavTrap::~ScavTrap( void ) {
     std::cout << "ScavTrap " << this->name << " was destroyed." << std::endl;
 }
 
+ScavTrap::ScavTrap( ScavTrap const & src ) {
+	*this = src;
+	std::cout << "ScavTrap " << this->name << " has been copied." << std::endl;
+}
+
+ScavTrap & ScavTrap::operator=( ScavTrap const & rhs ) {
+	this->hitPts = rhs.getHitPts();
+    this->energyPts = rhs.getEnergyPts();
+    this->attackDmg = rhs.getAttackDmg();
+	return *this;
+}
+
 void ScavTrap::attack( const std::string& target ) {
 	if (this->hitPts <= 0 || this->energyPts <= 0) {
 		std::cout << this->name << " has no hit or energy points." << std::endl;
@@ -38,5 +50,5 @@ void ScavTrap::guardGate( void ) {
 		std::cout << this->name << " has no hit or energy points." << std::endl;
 		return ;
 	}
-    std::cout << "Scavtrap " << this->name << " is now in Gate keeper mode." << std::endl;
+    std::cout << "ScavTrap " << this->name << " is now in Gate keeper mode." << std::endl;
 }

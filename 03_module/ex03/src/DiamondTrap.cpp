@@ -24,6 +24,19 @@ DiamondTrap::~DiamondTrap( void ) {
     std::cout << "DiamondTrap " << this->name << " was destroyed." << std::endl;
 }
 
+DiamondTrap::DiamondTrap( DiamondTrap const & src ) {
+    *this = src;
+    std::cout << "DiamondTrap " << this->name << " has been copied." << std::endl;
+}
+
+DiamondTrap & DiamondTrap::operator=( DiamondTrap const & rhs ) {
+    ClapTrap::name = rhs.getName().append("_clap_name");
+    this->hitPts = FragTrap::hitPts;
+    this->energyPts = ScavTrap::energyPts;
+    this->attackDmg = FragTrap::attackDmg;
+    return *this;
+}
+
 void DiamondTrap::whoAmI( void ) {
     if (this->hitPts <= 0 || this->energyPts <= 0) {
 		std::cout << this->name << " has no hit or energy points." << std::endl;

@@ -16,27 +16,20 @@
 #include "../inc/DiamondTrap.hpp"
 
 int	main( void ) {
-	// ClapTrap kiki = ClapTrap("Kiki");
-	// ScavTrap caca = ScavTrap("Caca");
-	// FragTrap fifi = FragTrap("Fifi");
 	DiamondTrap didi = DiamondTrap("Didi");
 	
-	// kiki.takeDamage(10);
-	// kiki.attack("Bubu");
-	// kiki.beRepaired(10);
-	// caca.takeDamage(10);
-	// caca.attack("Bubu");
-	// caca.beRepaired(10);
-	// caca.guardGate();
-	// fifi.takeDamage(10);
-	// fifi.attack("Bubu");
-	// fifi.beRepaired(10);
-	// fifi.highFiveGuys();
+	didi.printStatus();
+
 	didi.takeDamage(10);
+	didi.printStatus();
+
 	didi.attack("Bubu");
+	didi.printStatus();
+
 	didi.beRepaired(10);
+	didi.printStatus();
+	
 	didi.whoAmI();
 
-	
 	return 0;
 }

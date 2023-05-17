@@ -12,10 +12,6 @@
 
 #include "../inc/ScavTrap.hpp"
 
-ScavTrap::ScavTrap( void ) {
-	std::cout << "ScavTrap default was created." << std::endl;
-}
-
 ScavTrap::ScavTrap( std::string name ) : ClapTrap(name) {
     this->hitPts = 100;
     this->energyPts = 50;
@@ -25,6 +21,18 @@ ScavTrap::ScavTrap( std::string name ) : ClapTrap(name) {
 
 ScavTrap::~ScavTrap( void ) {
     std::cout << "ScavTrap " << this->name << " was destroyed." << std::endl;
+}
+
+ScavTrap::ScavTrap( ScavTrap const & src ) {
+	*this = src;
+	std::cout << "ScavTrap " << this->name << " has been copied." << std::endl;
+}
+
+ScavTrap & ScavTrap::operator=( ScavTrap const & rhs ) {
+	this->hitPts = rhs.getHitPts();
+    this->energyPts = rhs.getEnergyPts();
+    this->attackDmg = rhs.getAttackDmg();
+	return *this;
 }
 
 void ScavTrap::attack( const std::string& target ) {

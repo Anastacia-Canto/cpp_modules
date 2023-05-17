@@ -55,7 +55,7 @@ void ClapTrap::attack(const std::string& target) {
 
 void ClapTrap::takeDamage(unsigned int amount) {
 	if (this->hitPts >= amount) {
-		this->hitPts--;
+		this->hitPts -= amount;
 		std::cout << "ClapTrap " << this->name << " has taken " << amount << " of damage." << std::endl;
 	} else {
 		std::cout << "ClapTrap " << this->name << " has no hit points." << std::endl;
@@ -90,3 +90,9 @@ int ClapTrap::getAttackDmg( void ) const {
 	return this->attackDmg;
 }
 
+void	ClapTrap::printStatus( void ) {
+	std::cout << "My name is " << this->name
+	<< " - Hit Points: " << this->hitPts
+	<< " - Energy Points: " << this->energyPts
+	<< " - Attack Damage: " << this->attackDmg << std::endl;
+}

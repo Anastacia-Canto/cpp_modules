@@ -41,6 +41,7 @@ class ClapTrap {
 		int getHitPts( void ) const;
 		int getEnergyPts( void ) const;
 		int getAttackDmg( void ) const;
+		void	printStatus( void );
 	
 };
 

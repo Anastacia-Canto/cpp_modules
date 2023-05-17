@@ -14,10 +14,15 @@
 
 int	main( void ) {
 	ClapTrap kiki = ClapTrap("Kiki");
+
+	kiki.printStatus();
 	
-	kiki.takeDamage(10);
+	kiki.takeDamage(2);
+	kiki.printStatus();
 	kiki.attack("Bubu");
+	kiki.printStatus();
 	kiki.beRepaired(10);
+	kiki.printStatus();
 	
 	return 0;
 }

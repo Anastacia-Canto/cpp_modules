@@ -14,16 +14,22 @@
 #include "../inc/ScavTrap.hpp"
 
 int	main( void ) {
-	ClapTrap kiki = ClapTrap("Kiki");
+	
 	ScavTrap caca = ScavTrap("Caca");
 	
-	kiki.takeDamage(10);
-	kiki.attack("Bubu");
-	kiki.beRepaired(10);
+	caca.printStatus();
+
 	caca.takeDamage(10);
+	caca.printStatus();
+
 	caca.attack("Bubu");
+	caca.printStatus();
+
 	caca.beRepaired(10);
+	caca.printStatus();
+
 	caca.guardGate();
+	caca.printStatus();
 	
 	return 0;
 }

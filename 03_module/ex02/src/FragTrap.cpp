@@ -13,7 +13,6 @@
 #include "../inc/FragTrap.hpp"
 
 
-
 FragTrap::FragTrap( std::string name ) : ClapTrap(name) {
     this->hitPts = 100;
     this->energyPts = 100;
@@ -23,6 +22,19 @@ FragTrap::FragTrap( std::string name ) : ClapTrap(name) {
 
 FragTrap::~FragTrap( void ) {
     std::cout << "FragTrap " << this->name << " was destroyed." << std::endl;
+}
+
+FragTrap::FragTrap( FragTrap const & src ) {
+	*this = src;
+	std::cout << "FragTrap " << this->name << " has been copied." << std::endl;
+}
+
+FragTrap & FragTrap::operator=( FragTrap const & rhs ) {
+	ClapTrap::name = rhs.getName();
+	this->hitPts = rhs.getHitPts();
+    this->energyPts = rhs.getEnergyPts();
+    this->attackDmg = rhs.getAttackDmg();
+	return *this;
 }
 
 void FragTrap::attack( const std::string& target ) {

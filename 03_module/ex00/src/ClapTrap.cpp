@@ -36,7 +36,7 @@ ClapTrap & ClapTrap::operator=( ClapTrap const & rhs ) {
 	return *this;
 }
 
-void ClapTrap::attack(const std::string& target) {
+void ClapTrap::attack( const std::string& target ) {
 	if (this->_hitPts <= 0 || this->_energyPts <= 0) {
 		std::cout << this->_name << " has no hit or energy points." << std::endl;
 		return ;
@@ -46,16 +46,16 @@ void ClapTrap::attack(const std::string& target) {
 	target << " causing " << this->_attackDmg << " points of damage!"<< std::endl;
 }
 
-void ClapTrap::takeDamage(unsigned int amount) {
+void ClapTrap::takeDamage( unsigned int amount ) {
 	if (this->_hitPts >= amount) {
-		this->_hitPts--;
+		this->_hitPts -= amount;
 		std::cout << "ClapTrap " << this->_name << " has taken " << amount << " of damage." << std::endl;
 	} else {
 		std::cout << "ClapTrap " << this->_name << " has no hit points." << std::endl;
 	}
 }
 
-void ClapTrap::beRepaired(unsigned int amount) {
+void ClapTrap::beRepaired( unsigned int amount ) {
 	if (this->_energyPts <= 0 || this->_hitPts <= 0) {
 		std::cout << "ClapTrap has no energy or hit points." << std::endl;
 		return ;
@@ -81,4 +81,11 @@ int ClapTrap::getEnergyPts( void ) const {
 
 int ClapTrap::getAttackDmg( void ) const {
 	return this->_attackDmg;
+}
+
+void	ClapTrap::printStatus( void ) {
+	std::cout << "My name is " << this->_name
+	<< " - Hit Points: " << this->_hitPts
+	<< " - Energy Points: " << this->_energyPts
+	<< " - Attack Damage: " << this->_attackDmg << std::endl;
 }
