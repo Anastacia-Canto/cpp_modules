@@ -12,11 +12,10 @@
 
 #include "../inc/DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap( std::string name ) : name(name) {
+DiamondTrap::DiamondTrap( std::string name ) : name(name), FragTrap(), ScavTrap() {
     ClapTrap::name = name.append("_clap_name");
-    this->hitPts = FragTrap::hitPts;
-    this->energyPts = ScavTrap::energyPts;
-    this->attackDmg = FragTrap::attackDmg;
+    ScavTrap scav;
+    this->energyPts = scav.getEnergyPts();
     std::cout << "DiamondTrap " << this->name << " was created." << std::endl;
 }
 
