@@ -12,6 +12,7 @@ class WrongAnimal {
     
     public:
         WrongAnimal( void );
+        WrongAnimal( std::string type );
         ~WrongAnimal( void );
         WrongAnimal( WrongAnimal const & src );
         WrongAnimal & operator=( WrongAnimal const & rhs );

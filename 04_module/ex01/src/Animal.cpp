@@ -2,7 +2,12 @@
 #include "../inc/Animal.hpp"
 
 Animal::Animal( void ) {
+    this->type = "Animal";
     std::cout << "Animal default constructor called." << std::endl;
+}
+
+Animal::Animal( std::string type ) : type(type) {
+    std::cout << "Animal constructor called with type " << this->type << std::endl;
 }
 
 Animal::~Animal( void ) {

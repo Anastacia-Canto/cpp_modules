@@ -12,6 +12,7 @@ class Animal {
     
     public:
         Animal( void );
+        Animal( std::string type );
         ~Animal( void );
         Animal( Animal const & src );
         Animal & operator=( Animal const & rhs );

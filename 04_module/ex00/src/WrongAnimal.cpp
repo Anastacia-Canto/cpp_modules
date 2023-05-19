@@ -2,7 +2,12 @@
 #include "../inc/WrongAnimal.hpp"
 
 WrongAnimal::WrongAnimal( void ) {
+    this->type = "Wrong Animal";
     std::cout << "WrongAnimal default constructor called." << std::endl;
+}
+
+WrongAnimal::WrongAnimal( std::string type ) : type(type) {
+    std::cout << "WrongAnimal constructor called with type " << this->type << std::endl;
 }
 
 WrongAnimal::~WrongAnimal( void ) {
