@@ -12,18 +12,17 @@
 
 #include "../inc/ScavTrap.hpp"
 
-ScavTrap::ScavTrap( void ) {
-	this->name = "default";
-	this->hitPts = 100;
-    this->energyPts = 50;
-    this->attackDmg = 20;
-	std::cout << "ScavTrap " << this->name << " was created." << std::endl;
+ScavTrap::ScavTrap( void ) : ClapTrap("default") {
+	this->hitPts = hitPtsDef;
+    this->energyPts = energyPtsDef;
+    this->attackDmg = attackDmgDef;
+	std::cout << "ScavTrap default was created." << std::endl;
 }
 
 ScavTrap::ScavTrap( std::string name ) : ClapTrap(name) {
-    this->hitPts = 100;
-    this->energyPts = 50;
-    this->attackDmg = 20;
+    this->hitPts = hitPtsDef;
+    this->energyPts = energyPtsDef;
+    this->attackDmg = attackDmgDef;
     std::cout << "ScavTrap " << this->name << " was created." << std::endl;
 }
 

@@ -12,18 +12,17 @@
 
 #include "../inc/FragTrap.hpp"
 
-FragTrap::FragTrap( void ) {
-	this->name = "default";
-	this->hitPts = 100;
-    this->energyPts = 100;
-    this->attackDmg = 30;
-	std::cout << "FragTrap " << this->name << " was created." << std::endl;
+FragTrap::FragTrap( void ) : ClapTrap("default") {
+	this->hitPts = hitPtsDef;
+    this->energyPts = energyPtsDef;
+    this->attackDmg = attackDmgDef;
+	std::cout << "FragTrap default was created." << std::endl;
 }
 
 FragTrap::FragTrap( std::string name ) : ClapTrap(name) {
-    this->hitPts = 100;
-    this->energyPts = 100;
-    this->attackDmg = 30;
+    this->hitPts = hitPtsDef;
+    this->energyPts = energyPtsDef;
+    this->attackDmg = attackDmgDef;
     std::cout << "FragTrap " << this->name << " was created." << std::endl;
 }
 

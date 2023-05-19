@@ -12,10 +12,17 @@
 
 #include "../inc/DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap( std::string name ) : name(name), FragTrap(), ScavTrap() {
-    ClapTrap::name = name.append("_clap_name");
-    ScavTrap scav;
-    this->energyPts = scav.getEnergyPts();
+DiamondTrap::DiamondTrap( void ) : name("default"), ClapTrap("default_clap_name"), FragTrap(), ScavTrap() {
+    this->hitPts = FragTrap::hitPtsDef;
+    this->energyPts = ScavTrap::energyPtsDef;
+    this->attackDmg = FragTrap::attackDmgDef;
+    std::cout << "DiamondTrap " << this->name << " was created." << std::endl;
+}
+
+DiamondTrap::DiamondTrap( std::string name ) : name(name), ClapTrap(name + "_clap_name"), FragTrap(name), ScavTrap(name) {
+    this->hitPts = FragTrap::hitPtsDef;
+    this->energyPts = ScavTrap::energyPtsDef;
+    this->attackDmg = FragTrap::attackDmgDef;
     std::cout << "DiamondTrap " << this->name << " was created." << std::endl;
 }
 
@@ -37,10 +44,6 @@ DiamondTrap & DiamondTrap::operator=( DiamondTrap const & rhs ) {
 }
 
 void DiamondTrap::whoAmI( void ) {
-    if (this->hitPts <= 0 || this->energyPts <= 0) {
-		std::cout << this->name << " has no hit or energy points." << std::endl;
-		return ;
-	}
     std::cout << "DiamondTrap name is " << this->name
     << " and its ClapTrap name is " << ClapTrap::name << std::endl;
 }

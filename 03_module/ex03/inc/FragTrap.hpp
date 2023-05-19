@@ -17,6 +17,11 @@
 
 class FragTrap: virtual public ClapTrap {
 
+    protected:
+        static const int hitPtsDef = 100;
+        static const int energyPtsDef = 100;
+        static const int attackDmgDef = 30;
+
     public:
         FragTrap( void );
         FragTrap( std::string name );

@@ -19,6 +19,11 @@
 
 class ScavTrap: virtual public ClapTrap {
 
+    protected:
+        static const int hitPtsDef = 100;
+        static const int energyPtsDef = 50;
+        static const int attackDmgDef = 20;
+
     public:
         ScavTrap( void );
         ScavTrap( std::string name );
