@@ -10,8 +10,8 @@ int	main(void) {
 
 		std::cout << bureaucrat << std::endl;
 
-		// bureaucrat.decrement(150);
-		bureaucrat.increment(2);
+		bureaucrat.decrement(15);
+		// bureaucrat.increment(1);
 
 		std::cout << bureaucrat << std::endl;
 		

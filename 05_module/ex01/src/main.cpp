@@ -12,11 +12,10 @@ int	main(void) {
 		std::cout << bureaucrat << std::endl;
 
 		Form form("my form", 100, 100);
-
 		bureaucrat.signForm(form);
 
 		std::cout << form << std::endl;
-
+		
 	} catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}
