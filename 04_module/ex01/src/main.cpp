@@ -5,26 +5,26 @@
 
 int main( void ) {
     
-    // const Animal* animals[4] = { new Dog(), new Cat(), new Dog(), new Cat() };
+    const Animal* animals[4] = { new Dog(), new Cat(), new Dog(), new Cat() };
 
-	// for (const Animal* animal : animals)  {
-	// 	std::cout << animal->getType() << std::endl;
-	// 	animal->makeSound();
-	// }
+	for (const Animal* animal : animals)  {
+		std::cout << animal->getType() << std::endl;
+		animal->makeSound();
+	}
 
-	// for (const Animal* animal : animals)  {
-	// 	delete animal;
-	// }
+	for (const Animal* animal : animals)  {
+		delete animal;
+	}
 
-	Cat cat = Cat();
-	Dog dog = Dog();
+	// Cat cat = Cat();
+	// Dog dog = Dog();
 
-	cat.keepIdeas("Hello");
-	dog.keepIdeas("I am a dog.");
-	cat.keepIdeas("One more");
-	dog.keepIdeas("I think a lot.");
-	cat.openBrain();
-	dog.openBrain();
+	// cat.keepIdeas(cat.getBrain(), "Hello");
+	// dog.keepIdeas(dog.getBrain(), "I am a dog.");
+	// cat.keepIdeas(cat.getBrain(), "One more");
+	// dog.keepIdeas(dog.getBrain(), "I think a lot.");
+	// cat.openBrain(cat.getBrain());
+	// dog.openBrain(dog.getBrain());
 
     return 0;
 }

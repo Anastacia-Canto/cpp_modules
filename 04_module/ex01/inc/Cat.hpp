@@ -18,8 +18,7 @@ class Cat: public Animal {
         Cat( Cat const & src );
         Cat & operator=( Cat const & rhs );
         void makeSound( void ) const;
-        void openBrain( void ) const ;
-        void keepIdeas( std::string idea );
+		Brain & getBrain( void );
 };
 
 #endif

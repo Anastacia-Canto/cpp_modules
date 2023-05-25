@@ -25,10 +25,6 @@ void Dog::makeSound( void ) const {
     std::cout << "au au au au au" << std::endl;
 }
 
-void Dog::openBrain( void ) const {
-    this->_brain->read();
-}
-
-void    Dog::keepIdeas( std::string idea ) {
-    this->_brain->setIdeas(idea);
+Brain & Dog::getBrain( void ) {
+	return *this->_brain;
 }

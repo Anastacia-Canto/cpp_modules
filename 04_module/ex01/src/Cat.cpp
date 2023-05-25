@@ -25,10 +25,6 @@ void Cat::makeSound( void ) const {
     std::cout << "miau miau miau" << std::endl;
 }
 
-void Cat::openBrain( void ) const {
-    this->_brain->read();
-}
-
-void    Cat::keepIdeas( std::string idea ) {
-    this->_brain->setIdeas(idea);
+Brain & Cat::getBrain( void ) {
+	return *this->_brain;
 }

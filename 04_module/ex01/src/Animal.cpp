@@ -32,3 +32,11 @@ void Animal::makeSound( void ) const {
 std::string Animal::getType( void ) const {
     return this->type;
 }
+
+void Animal::openBrain( Brain & brain ) const {
+    brain.read();
+}
+
+void    Animal::keepIdeas( Brain & brain, std::string idea ) {
+    brain.setIdeas(idea);
+}
