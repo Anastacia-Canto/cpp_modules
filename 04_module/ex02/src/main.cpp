@@ -9,6 +9,12 @@ int main( void ) {
     
     const Animal* animals[4] = { new Dog(), new Cat(), new Dog(), new Cat() };
 
+
+	for (const Animal* animal : animals)  {
+		std::cout << animal->getType() << std::endl;
+		animal->makeSound();
+	}
+
 	for (const Animal* animal : animals)  {
 		delete animal;
 	}

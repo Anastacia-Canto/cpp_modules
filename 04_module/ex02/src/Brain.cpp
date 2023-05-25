@@ -2,6 +2,7 @@
 #include "../inc/Brain.hpp"
 
 Brain::Brain( void ) {
+	this->_index = 0;
 	std::cout << "Brain default constructor called." << std::endl;
 }
 
@@ -24,4 +25,17 @@ Brain & Brain::operator=( Brain const & rhs ) {
 
 std::string Brain::getIdeas( int i ) const {
 	return this->_ideas[i];
+}
+
+void	Brain::setIdeas( std::string idea ) {
+	this->_ideas[this->_index] = idea;
+	this->_index++;
+}
+
+void	Brain::read( void ) {
+	for (int i = 0; i < 100; i++) {
+        if (!this->_ideas[i].empty()) {
+            std::cout << this->_ideas[i] << std::endl;
+        }
+    }
 }

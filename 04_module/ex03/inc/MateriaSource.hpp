@@ -2,7 +2,7 @@
 #ifndef _MATERIASOURCE_HPP_
 # define _MATERIASOURCE_HPP_
 
-#include "../inc/IMateriaSource.hpp"
+#include "IMateriaSource.hpp"
 
 class MateriaSource: public IMateriaSource {
 
@@ -14,8 +14,9 @@ class MateriaSource: public IMateriaSource {
 		MateriaSource( MateriaSource const & src );
 		MateriaSource & operator=( MateriaSource const & rhs );
 		~MateriaSource( void );
-		virtual void learnMateria(AMateria*);
-		virtual AMateria* createMateria(std::string const & type);
+		void learnMateria(AMateria*);
+		AMateria* createMateria(std::string const & type);
+		AMateria* getMateriaSource( int i ) const ;
 
 
 };

@@ -4,6 +4,9 @@
 
 #include <iostream>
 #include <string>
+#include "Brain.hpp"
+
+class Brain;
 
 class Animal {
 
@@ -12,12 +15,15 @@ class Animal {
     
     public:
         Animal( void );
-        virtual ~Animal( void ) = 0;
+		Animal( std::string type );
+        virtual ~Animal( void );
         Animal( Animal const & src );
         Animal & operator=( Animal const & rhs );
-        virtual void makeSound( void ) const;
+        virtual void makeSound( void ) const = 0;
 
         std::string getType( void ) const;
+		void openBrain( Brain & brain  ) const ;
+        void keepIdeas( Brain & brain, std::string idea );
 
 };
 

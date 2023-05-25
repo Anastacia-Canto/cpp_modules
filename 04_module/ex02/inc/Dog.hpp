@@ -1,9 +1,10 @@
-
 #ifndef _DOG_HPP_
 # define _DOG_HPP_
 
-#include "../inc/Animal.hpp"
-#include "../inc/Brain.hpp"
+#include "Animal.hpp"
+#include "Brain.hpp"
+
+class Brain;
 
 class Dog: public Animal {
 
@@ -13,7 +14,10 @@ class Dog: public Animal {
     public:
         Dog( void );
         ~Dog( void );
+        Dog( Dog const & src );
+        Dog & operator=( Dog const & rhs );
         virtual void makeSound( void ) const;
+        Brain & getBrain( void );
 };
 
 

@@ -2,7 +2,7 @@
 #ifndef _IMATERIASOURCE_HPP_
 # define _IMATERIASOURCE_HPP_
 
-#include "../inc/AMateria.hpp"
+#include "AMateria.hpp"
 
 class AMateria;
 

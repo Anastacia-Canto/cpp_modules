@@ -13,6 +13,9 @@ MateriaSource::MateriaSource( MateriaSource const & src ) {
 }
 
 MateriaSource & MateriaSource::operator=( MateriaSource const & rhs ) {
+	for ( int i = 0; i < 4; i++ ) {
+		this->_memory[i] = rhs.getMateriaSource(i);
+	}
 	return *this;
 }
 
@@ -40,4 +43,8 @@ AMateria* MateriaSource::createMateria(std::string const & type) {
 		}
 	}
 	return 0 ;
+}
+
+AMateria* MateriaSource::getMateriaSource( int i ) const {
+	return this->_memory[i];
 }

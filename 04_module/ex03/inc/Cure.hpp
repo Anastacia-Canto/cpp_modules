@@ -3,15 +3,17 @@
 #ifndef _CURE_HPP_
 # define _CURE_HPP_
 
-#include "../inc/AMateria.hpp"
+#include "AMateria.hpp"
 
 class Cure: public AMateria {
 
 	public:
 		Cure( void );
 		~Cure( void );
+		Cure( Cure const & src );
+		Cure & operator=( Cure const & rhs );
 		AMateria* clone() const;
-		virtual void use(ICharacter& target);
+		void use(ICharacter& target);
 
 };
 
