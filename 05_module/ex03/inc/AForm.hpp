@@ -18,12 +18,12 @@ class AForm {
 
 	protected:
 		AForm( const std::string name, const int sign, const int execute );
-		virtual ~AForm( void );
 		AForm( AForm const & src );
 		AForm & operator=( AForm const & rhs );
 
 
 	public:
+		virtual ~AForm( void );
 		std::string getName( void ) const;
 		bool getIsSigned( void ) const;
 		int	getGradeSign( void ) const;
