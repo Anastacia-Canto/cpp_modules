@@ -7,10 +7,9 @@ Cure::Cure( void ) : AMateria("cure") {
 
 Cure::~Cure( void ) {
 	std::cout << "Cure destructor called." << std::endl;
-	delete this;
 }
 
-Cure::Cure( Cure const & src ) {
+Cure::Cure( Cure const & src ) : AMateria(src) {
 	*this = src;
 	std::cout << "Ice copy constructor called." << std::endl;
 }
