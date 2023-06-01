@@ -3,16 +3,16 @@
 
 RobotomyRequestForm::RobotomyRequestForm( std::string target ) 
 : _target(target), AForm("RobotomyRequestForm", 72, 45) {
-	std::cout << "Constructor called." << std::endl;
+	std::cout << "Robotomy constructor called." << std::endl;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm( void ) {
-	std::cout << "Destructor called." << std::endl;
+	std::cout << "Robotomy destructor called." << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const & src ) 
 : _target(src.getTarget()), AForm("RobotomyRequestForm", 72, 45) {
-	std::cout << "Copy constructor called." << std::endl;
+	std::cout << "Robotomy copy constructor called." << std::endl;
 }
 
 RobotomyRequestForm & RobotomyRequestForm::operator=( RobotomyRequestForm const & rhs ) {
@@ -26,7 +26,9 @@ std::string	RobotomyRequestForm::getTarget( void ) const {
 
 void RobotomyRequestForm::execute( Bureaucrat const & executor ) const {
 	
-	if (this->getIsSigned() && executor.getGrade() <= this->getGradeExecute()) {
+	if (!this->getIsSigned()) throw NotSignedException("form is not signed");
+	else if (executor.getGrade() > this->getGradeExecute()) throw GradeTooLowException("grade is too low");
+	else {
 
 		std::cout << "DRILLING NOISES " << std::endl;
 
@@ -37,7 +39,5 @@ void RobotomyRequestForm::execute( Bureaucrat const & executor ) const {
 		else
 			std::cout << "Robotomy has failed." << std::endl;
 		i++;
-	} else {
-		throw GradeTooLowException("form not signed or grade too low");
 	}
 }

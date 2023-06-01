@@ -2,7 +2,7 @@
 #include "../inc/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat( void ) : _name("default"), _grade(150) {
-	std::cout << "Default constructor called." << std::endl;
+	std::cout << "Bureaucrat default constructor called." << std::endl;
 }
 
 Bureaucrat::Bureaucrat( const std::string name, int grade ) : _name(name), _grade(grade) {
@@ -11,11 +11,11 @@ Bureaucrat::Bureaucrat( const std::string name, int grade ) : _name(name), _grad
 	if (grade > 150)
 		throw GradeTooLowException("GradeTooLowException: grade can't be lower than 150");
 	
-	std::cout << "Constructor called." << std::endl;
+	std::cout << "Bureaucrat constructor called." << std::endl;
 }
 
 Bureaucrat::~Bureaucrat( void ) {
-	std::cout << "Destructor called." << std::endl;
+	std::cout << "Bureaucrat destructor called." << std::endl;
 }
 
 Bureaucrat::Bureaucrat( Bureaucrat const & src ) {

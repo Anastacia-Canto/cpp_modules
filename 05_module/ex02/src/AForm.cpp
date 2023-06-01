@@ -10,11 +10,11 @@ AForm::AForm( const std::string name, const int sign, const int execute )
 	else if (this->_gradeToSign > 150 || this->_gradeToExecute > 150)
 		throw GradeTooLowException("GradeTooLowException: grade can't be lower than 150");
 	
-	std::cout << "Constructor called." << std::endl;
+	std::cout << "Form constructor called." << std::endl;
 }
 
 AForm::~AForm( void ) {
-	std::cout << "Destructor called." << std::endl;
+	std::cout << "Form destructor called." << std::endl;
 }
 
 AForm::AForm( AForm const & src ) 

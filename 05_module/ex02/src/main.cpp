@@ -10,7 +10,7 @@ int     main( void ) {
         /*--- Presidential Pardon ---*/
         std::cout << "Presidential Form Test" << std::endl;
 
-		Bureaucrat b1("bubu", 20);
+		Bureaucrat b1("bubu", 30);
 
 		std::cout << b1 << std::endl;
 
@@ -26,7 +26,7 @@ int     main( void ) {
         std::cout << "--------------------------------------------" << std::endl;
         std::cout << "Robotomy Request Test" << std::endl;
 
-        Bureaucrat b2("toto", 72);
+        Bureaucrat b2("toto", 40);
 
         std::cout << b2 << std::endl;
 
@@ -40,7 +40,7 @@ int     main( void ) {
 
         /*--- Shrubbery Creation ---*/
 
-                std::cout << "--------------------------------------------" << std::endl;
+        std::cout << "--------------------------------------------" << std::endl;
         std::cout << "Shrubbery Creation Test" << std::endl;
 
         Bureaucrat b3("lili", 140);
@@ -55,7 +55,7 @@ int     main( void ) {
 
         b3.executeForm(susu);
 
-		
+		std::cout << "--------------------------------------------" << std::endl;
 	} catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}

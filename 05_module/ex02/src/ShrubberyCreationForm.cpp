@@ -2,16 +2,16 @@
 #include "../inc/ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm( std::string target ) : _target(target), AForm("ShrubberyCreationForm", 145, 137) {
-	std::cout << "Constructor called." << std::endl;
+	std::cout << "Shrubbery constructor called." << std::endl;
 }
  
 ShrubberyCreationForm::~ShrubberyCreationForm( void ) {
-	std::cout << "Destructor called." << std::endl;
+	std::cout << "Shrubbery destructor called." << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & src ) 
 : _target(src.getTarget()), AForm("ShrubberyCreationForm", src.getGradeSign(), src.getGradeExecute()) {
-	std::cout << "Copy constructor called." << std::endl;
+	std::cout << "Shrubbery copy constructor called." << std::endl;
 }
 
 ShrubberyCreationForm & ShrubberyCreationForm::operator=( ShrubberyCreationForm const & rhs ) {
@@ -25,7 +25,9 @@ std::string	ShrubberyCreationForm::getTarget( void ) const {
 
 void ShrubberyCreationForm::execute( Bureaucrat const & executor ) const {
 	
-	if (this->getIsSigned() && executor.getGrade() <= this->getGradeExecute()) {
+	if (!this->getIsSigned()) throw NotSignedException("form is not signed");
+	else if (executor.getGrade() > this->getGradeExecute()) throw GradeTooLowException("grade is too low");
+	else {
 
 		std::string fileName = this->_target + "_shrubbery.txt";
 
@@ -47,7 +49,5 @@ void ShrubberyCreationForm::execute( Bureaucrat const & executor ) const {
 		file << "                                       {" << std::endl;
 
 		file.close();
-	} else {
-		throw GradeTooLowException("form not signed or grade too low");
 	}
 }
