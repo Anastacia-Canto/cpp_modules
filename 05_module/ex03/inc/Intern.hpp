@@ -25,6 +25,15 @@ class Intern {
         Intern & operator=( Intern const & rhs );
 
         AForm* makeForm( std::string form, std::string target );
+
+        class NotFoundException : public std::exception {
+			private:
+				const char	*message;
+
+			public:
+				NotFoundException(const char * msg) : message(msg) {}
+				const char * what() const throw();
+		};
 };
 
 

@@ -12,8 +12,23 @@ int     main( void ) {
 
     AForm*  srf;
 
-    srf = someRandomIntern.makeForm("RobotomyRequestForm", "robot");
-    delete srf;
+    try {
+        srf = someRandomIntern.makeForm("RobotomyRequestForm", "robot");
+        
+        if (srf) {
+            std::cout << *srf << std::endl;
+            Bureaucrat bubu("bubu", 150);
+            std::cout << bubu << std::endl;
+
+            bubu.signForm(*srf);
+            std::cout << *srf << std::endl;
+            bubu.executeForm(*srf);
+            delete srf;
+        }
+
+    } catch(std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 
 	return 0; 
 }

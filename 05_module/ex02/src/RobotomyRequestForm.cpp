@@ -26,9 +26,7 @@ std::string	RobotomyRequestForm::getTarget( void ) const {
 
 void RobotomyRequestForm::execute( Bureaucrat const & executor ) const {
 	
-	if (!this->getIsSigned()) throw NotSignedException("form is not signed");
-	else if (executor.getGrade() > this->getGradeExecute()) throw GradeTooLowException("grade is too low");
-	else {
+	if (checkRequirements(executor.getGrade())) {
 
 		std::cout << "DRILLING NOISES " << std::endl;
 

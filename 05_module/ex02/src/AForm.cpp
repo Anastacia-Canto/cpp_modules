@@ -48,6 +48,18 @@ void	AForm::beSigned( Bureaucrat const & bureaucrat ) {
 		throw GradeTooLowException("grade is lower than the required one.");
 }
 
+bool	AForm::checkRequirements( int grade ) const {
+	if (!getIsSigned()){
+		throw NotSignedException("form is not signed");
+		return false;
+	} else if (grade > getGradeExecute()) {
+		throw GradeTooLowException("grade is too low");
+		return false;
+	} else {
+		return true;
+	}
+}
+
 std::ostream & operator<<( std::ostream & out, AForm const & rhs ) {
 	out << "Name: " << rhs.getName() << std::endl;
 	out << "Grade to sign: " << rhs.getGradeSign() << std::endl;

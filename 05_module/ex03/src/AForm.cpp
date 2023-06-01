@@ -10,11 +10,11 @@ AForm::AForm( const std::string name, const int sign, const int execute )
 	else if (this->_gradeToSign > 150 || this->_gradeToExecute > 150)
 		throw GradeTooLowException("GradeTooLowException: grade can't be lower than 150");
 	
-	std::cout << "Constructor called." << std::endl;
+	std::cout << "Form constructor called." << std::endl;
 }
 
 AForm::~AForm( void ) {
-	std::cout << "Destructor called." << std::endl;
+	std::cout << "Form destructor called." << std::endl;
 }
 
 AForm::AForm( AForm const & src ) 
@@ -46,6 +46,18 @@ void	AForm::beSigned( Bureaucrat const & bureaucrat ) {
 		this->_isSigned = true;
 	else
 		throw GradeTooLowException("grade is lower than the required one.");
+}
+
+bool	AForm::checkRequirements( int grade ) const {
+	if (!getIsSigned()){
+		throw NotSignedException("form is not signed");
+		return false;
+	} else if (grade > getGradeExecute()) {
+		throw GradeTooLowException("grade is too low");
+		return false;
+	} else {
+		return true;
+	}
 }
 
 std::ostream & operator<<( std::ostream & out, AForm const & rhs ) {

@@ -5,11 +5,11 @@ Intern::Intern( void ) {
     this->forms[0] = &Intern::createShrubbery;
     this->forms[1] = &Intern::createRobot;
     this->forms[2] = &Intern::createPresident;
-    std::cout << "Constructor called" << std::endl;
+    std::cout << "Intern constructor called" << std::endl;
 }
 
 Intern::~Intern( void ) {
-    std::cout << "Destructor called." << std::endl;
+    std::cout << "Intern destructor called." << std::endl;
 }
 
 Intern::Intern( Intern const & src ) {
@@ -32,6 +32,10 @@ AForm*  Intern::createPresident( std::string target ) {
     return new PresidentialPardonForm(target);
 }
 
+const char * Intern::NotFoundException::what() const throw() {
+	return message;
+}
+
 AForm* Intern::makeForm( std::string form, std::string target ) {
     std::string forms[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
     int i = 0;
@@ -42,12 +46,13 @@ AForm* Intern::makeForm( std::string form, std::string target ) {
         }
         i++;
     }
-    
-    try {
-        std::cout << "Intern creates " << forms[i] << std::endl;
-        return ((this->*forms[i])(target));
-    } catch (std::exception &e) {
-        std::cerr << e.what() << std::endl;
+
+    if (i == 3) {
+        throw NotFoundException("Form not found");
+        return NULL;
     }
-    return NULL;
+    
+    std::cout << "Intern creates " << forms[i] << std::endl;
+    return ((this->*Intern::forms[i])(target));
+   
 }

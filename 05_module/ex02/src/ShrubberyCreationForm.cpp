@@ -25,9 +25,7 @@ std::string	ShrubberyCreationForm::getTarget( void ) const {
 
 void ShrubberyCreationForm::execute( Bureaucrat const & executor ) const {
 	
-	if (!this->getIsSigned()) throw NotSignedException("form is not signed");
-	else if (executor.getGrade() > this->getGradeExecute()) throw GradeTooLowException("grade is too low");
-	else {
+	if (checkRequirements(executor.getGrade())) {
 
 		std::string fileName = this->_target + "_shrubbery.txt";
 
