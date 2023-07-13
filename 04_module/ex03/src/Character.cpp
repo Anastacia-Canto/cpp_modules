@@ -1,23 +1,25 @@
 
 #include "../inc/Character.hpp"
 
-Character::Character( void ) {
+Character::Character( void ) : ICharacter() {
 	std::cout << "Character default constructor called." << std::endl;
 }
 
-Character::Character( std::string name ) : _name(name){
+Character::Character( std::string name ) : ICharacter(), _name(name){
 	for ( int i = 0; i < 4; i ++) {
 		this->_inventory[i] = NULL;
-	}
-	for ( int i = 0; i < 100; i ++) {
 		this->_garbage[i] = NULL;
 	}
 	std::cout << "Character constructor receiving " << this->_name << " as parameter." << std::endl;
 }
 
 Character::Character( Character const & src ) {
-	std::cout << "Character copy constructor called." << std::endl;
+	for ( int i = 0; i < 4; i ++) {
+		this->_inventory[i] = NULL;
+		this->_garbage[i] = NULL;
+	}
 	*this = src;
+	std::cout << "Character copy constructor called." << std::endl;
 }
 
 
@@ -39,7 +41,7 @@ Character::~Character( void ) {
 			delete this->_inventory[i];
 		}
 	}
-	for (int i = 0; i < 100; i++ ) {
+	for (int i = 0; i < 4; i++ ) {
 		if (this->_garbage[i] != NULL) {
 			delete this->_garbage[i];
 		}
@@ -60,8 +62,8 @@ void Character::equip(AMateria* m) {
 }
 
 void Character::unequip(int idx) {
-	if (idx > 4 || idx < 0 || this->_inventory[idx] == NULL) return ;
-	for (int i = 0; i < 100; i++) {
+	if (idx > 3 || idx < 0 || this->_inventory[idx] == NULL) return ;
+	for (int i = 0; i < 4; i++) {
 		if (this->_garbage[i] == NULL) {
 			this->_garbage[i] = this->_inventory[idx];
 			break ;
@@ -71,7 +73,7 @@ void Character::unequip(int idx) {
 }
 
 void Character::use(int idx, ICharacter& target) {
-	if (idx >= 4 || idx < 0 || this->_inventory[idx] == NULL) return ;
+	if (idx > 3 || idx < 0 || this->_inventory[idx] == NULL) return ;
 	this->_inventory[idx]->use(target);
 }
 

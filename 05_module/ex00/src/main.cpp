@@ -11,7 +11,7 @@ int	main(void) {
 		std::cout << bureaucrat << std::endl;
 
 		bureaucrat.decrement(15);
-		// bureaucrat.increment(1);
+		// bureaucrat.increment(2);
 
 		std::cout << bureaucrat << std::endl;
 		

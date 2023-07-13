@@ -1,7 +1,9 @@
 
 NAME = bureaucrat
 
-SRC = ./src/main ./src/Bureaucrat ./src/Form
+SRC = ./src/main ./src/Bureaucrat ./src/AForm\
+	./src/ShrubberyCreationForm ./src/RobotomyRequestForm\
+	./src/PresidentialPardonForm ./src/Intern
 
 INC = -I ./inc
 

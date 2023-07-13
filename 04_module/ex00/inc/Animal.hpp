@@ -13,7 +13,7 @@ class Animal {
     public:
         Animal( void );
         Animal( std::string type );
-        ~Animal( void );
+        virtual ~Animal( void );
         Animal( Animal const & src );
         Animal & operator=( Animal const & rhs );
         virtual void makeSound( void ) const;

@@ -10,15 +10,17 @@ Form::Form( const std::string name, const int sign, const int execute )
 	else if (this->_gradeToSign > 150 || this->_gradeToExecute > 150)
 		throw GradeTooLowException("GradeTooLowException: grade can't be lower than 150");
 	
-	std::cout << "Constructor called." << std::endl;
+	std::cout << "Form constructor called." << std::endl;
 }
 
 Form::~Form( void ) {
-	std::cout << "Destructor called." << std::endl;
+	std::cout << "Form destructor called." << std::endl;
 }
 
 Form::Form( Form const & src ) 
-: _name(src.getName()), _gradeToSign(src.getGradeSign()), _gradeToExecute(src.getGradeExecute()) {}
+: _name(src.getName()), _gradeToSign(src.getGradeSign()), _gradeToExecute(src.getGradeExecute()) {
+	*this = src;
+}
 
 Form & Form::operator=( Form const & rhs ) {
 	this->_isSigned = rhs.getIsSigned();
@@ -42,7 +44,7 @@ int Form::getGradeExecute( void ) const {
 }
 
 void	Form::beSigned( Bureaucrat const & bureaucrat ) {
-	if (bureaucrat.getGrade() < this->_gradeToSign)
+	if (bureaucrat.getGrade() <= this->_gradeToSign)
 		this->_isSigned = true;
 	else
 		throw GradeTooLowException("grade is lower than the required one.");

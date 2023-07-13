@@ -7,10 +7,9 @@ Ice::Ice( void ) : AMateria("ice") {
 
 Ice::~Ice( void ) {
 	std::cout << "Ice destructor called." << std::endl;
-	delete this;
 }
 
-Ice::Ice( Ice const & src ) {
+Ice::Ice( Ice const & src ) : AMateria(src) {
 	*this = src;
 	std::cout << "Ice copy constructor called." << std::endl;
 }

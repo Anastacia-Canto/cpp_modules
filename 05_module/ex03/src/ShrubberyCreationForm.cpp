@@ -47,5 +47,5 @@ void ShrubberyCreationForm::execute( Bureaucrat const & executor ) const {
 		file << "                                       {" << std::endl;
 
 		file.close();
-	}
+	} 
 }

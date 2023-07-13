@@ -37,5 +37,5 @@ void RobotomyRequestForm::execute( Bureaucrat const & executor ) const {
 		else
 			std::cout << "Robotomy has failed." << std::endl;
 		i++;
-	}
+	} 
 }
