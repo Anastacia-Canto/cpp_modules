@@ -86,47 +86,47 @@ int ScalarConverter::pseudoLiterals( std::string literal ) {
 
 void	ScalarConverter::engine( char literal) {
 	std::cout << "char: " << literal << std::endl;
-	std::cout << "int: " << (int)literal << std::endl;
-	std::cout << "float: " << (float)literal << ".0f" << std::endl;
-	std::cout << "double: " << (double)literal << ".0" << std::endl;
+	std::cout << "int: " << static_cast<int>(literal) << std::endl;
+	std::cout << "float: " << static_cast<float>(literal) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(literal) << ".0" << std::endl;
 }
 
 void ScalarConverter::engine( int literal ) {
 	if ((literal >= 0 && literal < 33) || literal == 127) {
 		std::cout << "char: Non displayable" << std::endl;
-	} else if (literal < 0) {
+	} else if (literal < 0 || literal > 127) {
 		std::cout << "char: impossible" << std::endl;
 	} else {
-		std::cout << "char: " << (char)literal << std::endl;
+		std::cout << "char: " << static_cast<char>(literal) << std::endl;
 	}
 	std::cout << "int: " << literal << std::endl;
-	std::cout << "float: " << (float)literal << ".0f" << std::endl;
-	std::cout << "double: " << (double)literal << ".0" << std::endl;
+	std::cout << "float: " << static_cast<float>(literal) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(literal) << ".0" << std::endl;
 }
 void ScalarConverter::engine( float literal ) {
 	if ((literal >= 0 && literal < 33) || literal == 127) {
 		std::cout << "char: Non displayable" << std::endl;
-	} else if (literal < 0) {
+	} else if (literal < 0 || literal > 127) {
 		std::cout << "char: impossible" << std::endl;
 	} else {
-		std::cout << "char: " << (char)literal << std::endl;
+		std::cout << "char: " << static_cast<char>(literal) << std::endl;
 	}
-	std::cout << "int: " << (int)literal << std::endl;
-	std::cout << "float: " << literal << ".0f" << std::endl;
-	std::cout << "double: " << (double)literal << ".0" << std::endl;
+	std::cout << "int: " << static_cast<int>(literal) << std::endl;
+	std::cout << "float: " << literal << (literal == static_cast<int>(literal) ? ".0" : "") << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(literal) << (literal == static_cast<int>(literal) ? ".0" : "") << std::endl;
 }
 
 void ScalarConverter::engine( double literal ) {
 	if ((literal >= 0 && literal < 33) || literal == 127) {
 		std::cout << "char: Non displayable" << std::endl;
-	} else if (literal < 0) {
+	} else if (literal < 0 || literal > 127) {
 		std::cout << "char: impossible" << std::endl;
 	} else {
-		std::cout << "char: " << (char)literal << std::endl;
+		std::cout << "char: " << static_cast<char>(literal) << std::endl;
 	}
-	std::cout << "int: " << (int)literal << std::endl;
-	std::cout << "float: " << (float)literal << ".0f" << std::endl;
-	std::cout << "double: " << literal << ".0" << std::endl;
+	std::cout << "int: " << static_cast<int>(literal) << std::endl;
+	std::cout << "float: " << static_cast<float>(literal) << (literal == static_cast<int>(literal) ? ".0" : "") << "f" << std::endl;
+	std::cout << "double: " << literal << (literal == static_cast<int>(literal) ? ".0" : "") << std::endl;
 }
 
 //------------------------------------Conversion Manager--------------------------------------------//
