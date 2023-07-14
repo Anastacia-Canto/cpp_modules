@@ -48,7 +48,7 @@ std::string ScalarConverter::setType( std::string literal ) {
 				f++;
 			}
 		}
-		if (dot == 0 && f == 0) {
+		if (dot == 0 && f == 0 && !ScalarConverter::checkLimits(literal)) {
 			type = "int";
 		} else if (dot == 1 && f == 0) {
 			type = "double";
@@ -60,6 +60,18 @@ std::string ScalarConverter::setType( std::string literal ) {
 		}
 	}
 	return type;
+}
+
+int ScalarConverter::checkLimits( std::string literal ) {
+
+	if (((literal[0] == '+' || literal[0] == '-') && literal.length() > 11) 
+		|| (!literal[0] == '+' && !literal[0] == '-' && literal.length() > 10)
+		|| (literal.length() == 10 && literal.compare("2147483647") > 0)
+		|| (literal.length() == 11 && literal[0] == '+' && literal.compare("+2147483647") > 0)
+		|| (literal.length() == 11 && literal[0] == '-' && literal.compare("-2147483648") > 0)) {
+		return 1;
+	}
+	return 0;
 }
 
 int ScalarConverter::pseudoLiterals( std::string literal ) {
@@ -111,7 +123,12 @@ void ScalarConverter::engine( float literal ) {
 	} else {
 		std::cout << "char: " << static_cast<char>(literal) << std::endl;
 	}
-	std::cout << "int: " << static_cast<int>(literal) << std::endl;
+	std::cout << "int: ";
+	if (literal <= -2147483648.f || literal >= 2147483647.f) {
+		std::cout << "impossible" << std::endl;
+	} else {
+		std::cout << static_cast<int>(literal) << std::endl;
+	}
 	std::cout << "float: " << literal << (literal == static_cast<int>(literal) ? ".0" : "") << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(literal) << (literal == static_cast<int>(literal) ? ".0" : "") << std::endl;
 }
@@ -124,7 +141,12 @@ void ScalarConverter::engine( double literal ) {
 	} else {
 		std::cout << "char: " << static_cast<char>(literal) << std::endl;
 	}
-	std::cout << "int: " << static_cast<int>(literal) << std::endl;
+	std::cout << "int: ";
+	if (literal <= -2147483648.0 || literal >= 2147483647.0) {
+		std::cout << "impossible" << std::endl;
+	} else {
+		std::cout << static_cast<int>(literal) << std::endl;
+	}
 	std::cout << "float: " << static_cast<float>(literal) << (literal == static_cast<int>(literal) ? ".0" : "") << "f" << std::endl;
 	std::cout << "double: " << literal << (literal == static_cast<int>(literal) ? ".0" : "") << std::endl;
 }
