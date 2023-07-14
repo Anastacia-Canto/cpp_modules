@@ -124,7 +124,7 @@ void ScalarConverter::engine( float literal ) {
 		std::cout << "char: " << static_cast<char>(literal) << std::endl;
 	}
 	std::cout << "int: ";
-	if (literal <= -2147483648.f || literal >= 2147483647.f) {
+	if (literal < std::numeric_limits<int>::lowest() || literal > std::numeric_limits<int>::max()) {
 		std::cout << "impossible" << std::endl;
 	} else {
 		std::cout << static_cast<int>(literal) << std::endl;
@@ -142,12 +142,17 @@ void ScalarConverter::engine( double literal ) {
 		std::cout << "char: " << static_cast<char>(literal) << std::endl;
 	}
 	std::cout << "int: ";
-	if (literal <= -2147483648.0 || literal >= 2147483647.0) {
+	if (literal < std::numeric_limits<int>::lowest() || literal > std::numeric_limits<int>::max()) {
 		std::cout << "impossible" << std::endl;
 	} else {
 		std::cout << static_cast<int>(literal) << std::endl;
 	}
-	std::cout << "float: " << static_cast<float>(literal) << (literal == static_cast<int>(literal) ? ".0" : "") << "f" << std::endl;
+	std::cout << "float: ";
+	if (literal < std::numeric_limits<float>::lowest() || literal > std::numeric_limits<float>::max()) {
+		std::cout << "impossible" << std::endl;
+	} else {
+		std::cout << static_cast<float>(literal) << (literal == static_cast<int>(literal) ? ".0" : "") << "f" << std::endl;
+	}
 	std::cout << "double: " << literal << (literal == static_cast<int>(literal) ? ".0" : "") << std::endl;
 }
 
