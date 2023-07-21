@@ -76,13 +76,13 @@ int ScalarConverter::checkLimits( std::string literal ) {
 
 int ScalarConverter::pseudoLiterals( std::string literal ) {
 
-	if (!literal.compare("-inff") || !literal.compare("+inff") || !literal.compare("nanf")) {
+	if (!literal.compare("-inff") || !literal.compare("+inff") || !literal.compare("inff") || !literal.compare("nanf")) {
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
 		std::cout << "float: " << literal << std::endl;
 		std::cout << "double: " << literal.erase(literal.length() - 1) << std::endl;
 		return 1;
-	} else if (!literal.compare("-inf") || !literal.compare("+inf") || !literal.compare("nan")) {
+	} else if (!literal.compare("-inf") || !literal.compare("+inf") || !literal.compare("inf") || !literal.compare("nan")) {
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
 		std::cout << "float: " << literal.append("f") << std::endl;

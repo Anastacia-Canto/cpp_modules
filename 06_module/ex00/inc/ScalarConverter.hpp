@@ -12,11 +12,13 @@
 
 class ScalarConverter {
 
-	public:
+	private:
 		ScalarConverter( void );
+		~ScalarConverter( void );
 		ScalarConverter( ScalarConverter const & src );
 		ScalarConverter & operator=( ScalarConverter const & rhs );
-		~ScalarConverter( void );
+
+	public:
 
 		static void convert( std::string literal );
 
