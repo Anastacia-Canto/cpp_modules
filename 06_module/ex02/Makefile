@@ -1,7 +1,7 @@
 
 NAME = identity
 
-SRC = ./src/main ./src/Base ./src/A ./src/B ./src/C
+SRC = ./src/main ./src/Base
 
 INC = -I ./inc
 
@@ -21,4 +21,7 @@ clean:
 
 re: clean all
 
-.PHONY: all clean re
+run: all
+	./${NAME}
+
+.PHONY: all clean re run

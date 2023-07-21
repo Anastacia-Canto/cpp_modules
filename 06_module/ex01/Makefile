@@ -20,5 +20,7 @@ clean:
 	$(RM) $(NAME) $(SRC:=.o)
 
 re: clean all
+run: all
+	./${NAME}
 
-.PHONY: all clean re
+.PHONY: all clean re run
