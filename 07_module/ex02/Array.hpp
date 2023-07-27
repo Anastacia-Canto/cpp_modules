@@ -14,22 +14,22 @@ class Array {
 	
 
 	public:
-		Array<T>(void) {
+		Array(void) {
 			_size = 0;
-			_myArr = new T[0];
+			_myArr = new T();
 		}
 
-		Array<T>(unsigned int n) {
+		Array(unsigned int n) {
 			_size = n;
 			_myArr = new T[n];
 		}
 
-		Array<T>(Array const & src) {
+		Array(Array const & src) {
 			_size = src.size();
 			_myArr = new T[src.size()];
 		}
 
-		Array<T> & operator=(const Array<T> & rhs) {
+		Array & operator=(Array const & rhs) {
 			delete [] _myArr;
 			_size = rhs.size();
 			_myArr = new T[rhs.size()];
@@ -38,7 +38,7 @@ class Array {
 			}
 			return *this;
 		}
-		~Array<T>(void) {
+		~Array(void) {
 			delete [] _myArr;
 		}
 
@@ -48,12 +48,17 @@ class Array {
 
 		T & operator[](int index) const {
 			if (index >= _size) {
-				throw std::exception();
+				throw OutOfBoundsException();
 			}
 			return _myArr[index];
 		}
 
-
+		class OutOfBoundsException : public std::exception {
+			public:
+				virtual const char* what() const throw() {
+					return "Index is out of bounds";
+				}
+		};
 };
 
 
