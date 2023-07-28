@@ -18,8 +18,8 @@ class Span {
 
 	private:
 		unsigned int _max;
+		unsigned int _amount;
 		std::vector<int> _myInts;
-		std::vector<int>::iterator _pos;
 		
 	
 	public:
@@ -29,10 +29,12 @@ class Span {
 		Span & operator=(Span const & rhs);
 
 		unsigned int getMax(void) const;
+		unsigned int getAmount(void) const;
 		const std::vector<int> getVector(void) const;
 		void addNumber(int num);
 		int shortestSpan(void);
 		int longestSpan(void);
+		
 		void addManyNumbers(unsigned int n);
 
 		class SpanException : public std::exception {
@@ -44,5 +46,7 @@ class Span {
 		};
 
 };
+
+int randomNumber(void);
 
 #endif
