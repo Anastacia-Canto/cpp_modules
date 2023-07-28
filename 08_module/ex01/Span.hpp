@@ -11,6 +11,8 @@
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
+#include <numeric>
+
 
 class Span {
 
@@ -27,6 +29,7 @@ class Span {
 		Span & operator=(Span const & rhs);
 
 		unsigned int getMax(void) const;
+		const std::vector<int> getVector(void) const;
 		void addNumber(int num);
 		int shortestSpan(void);
 		int longestSpan(void);

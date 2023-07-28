@@ -9,18 +9,27 @@ Span::Span(unsigned int n) : _max(n) {
 Span::~Span(void) {}
 
 Span::Span(Span const & src) {
-	_max = src.getMax();
-	_myInts.resize(_max);
+	*this = src;
 }
 
 Span & Span::operator=(Span const & rhs) {
 	_max = rhs.getMax();
 	_myInts.resize(_max);
+	for (int i = 0; i < _max; i++) {
+		std::cout << "rhs " << i << ": " << rhs.getVector()[i] << std::endl;
+		_myInts[i] = rhs.getVector()[i];
+		std::cout << "myInts " << i << ": " << _myInts[i] << std::endl;
+	}
+
 	return *this;
 }
 
 unsigned int Span::getMax(void) const {
 	return _max;
+}
+
+const std::vector<int> Span::getVector(void) const {
+	return _myInts;
 }
 
 const char * Span::SpanException::what() const throw() {
@@ -43,15 +52,11 @@ int Span::shortestSpan(void) {
 		throw SpanException("Too few elements!");
 	}
 
-	unsigned int index = std::distance(_myInts.begin(), _pos - 1);
-	unsigned int shortSpan = std::abs(_myInts[1] - _myInts[0]);
-
-	for (unsigned int i = index; i > 0; i--) {
-		int span = std::abs(_myInts[i] - _myInts[i - 1]);
-		if (span < shortSpan) {
-			shortSpan = span;
-		}
-	}
+	std::vector<int> sorted(_myInts.begin(), _pos);
+	std::sort (sorted.begin(), sorted.end());
+	std::vector<int> diff(sorted);
+	std::adjacent_difference(sorted.begin(), sorted.end(), diff.begin());
+	int shortSpan = *std::min_element(diff.begin(), diff.end());
 
 	return shortSpan;
 }
@@ -60,18 +65,8 @@ int Span::longestSpan(void) {
 	if (std::distance(_myInts.begin(), _pos) <= 1) {
 		throw SpanException("Too few elements!");
 	}
-
-	unsigned int index = std::distance(_myInts.begin(), _pos - 1);
-	unsigned int longSpan = std::abs(_myInts[1] - _myInts[0]);
-
-	for (unsigned int i = index; i > 0; i--) {
-		int span = std::abs(_myInts[i] - _myInts[i - 1]);
-		if (span > longSpan) {
-			longSpan = span;
-		}
-	}
-
-	return longSpan;
+	
+	return (*std::max_element(_myInts.begin(), _pos) - *std::min_element(_myInts.begin(), _pos));
 }
 
 void Span::addManyNumbers(unsigned int n) {
