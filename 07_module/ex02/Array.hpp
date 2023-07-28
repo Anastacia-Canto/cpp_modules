@@ -47,7 +47,7 @@ class Array {
 		}
 
 		T & operator[](int index) const {
-			if (index >= _size) {
+			if (index >= static_cast<int>(_size) || index < 0) {
 				throw OutOfBoundsException();
 			}
 			return _myArr[index];
