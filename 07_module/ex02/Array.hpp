@@ -27,6 +27,9 @@ class Array {
 		Array(Array const & src) {
 			_size = src.size();
 			_myArr = new T[src.size()];
+			for (unsigned int i = 0; i < _size; i++) {
+				_myArr[i] = src[i];
+			}
 		}
 
 		Array & operator=(Array const & rhs) {
