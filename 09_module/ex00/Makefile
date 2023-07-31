@@ -23,7 +23,4 @@ fclean: clean
 
 re: clean all
 
-run: clean all
-	./${NAME}
-
-.PHONY: all fclean clean re run
+.PHONY: all fclean clean re

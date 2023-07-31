@@ -11,14 +11,15 @@
 class BitcoinExchange {
 
 	private:
-		std::map<char, double> prices;
 		BitcoinExchange(void);
 		BitcoinExchange(BitcoinExchange const & src);
 		BitcoinExchange & operator=(BitcoinExchange const & rhs);
 		~BitcoinExchange(void);
+
+		static std::map<std::string, double> getData(const char * file, const char * sep);
 	
 	public:
-		static void getValues(std::ofstream& file);
+		static void getValues(char * file);
 
 };
 
