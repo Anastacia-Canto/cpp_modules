@@ -6,6 +6,9 @@
 #include <string>
 #include <map>
 #include <fstream>
+#include <ctype.h>
+#include <time.h>
+#include <stdlib.h>
 
 
 class BitcoinExchange {
