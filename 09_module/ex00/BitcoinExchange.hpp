@@ -9,6 +9,7 @@
 #include <ctype.h>
 #include <time.h>
 #include <stdlib.h>
+#include <algorithm>
 
 
 class BitcoinExchange {
@@ -20,6 +21,8 @@ class BitcoinExchange {
 		~BitcoinExchange(void);
 
 		static std::map<std::string, double> getData(const char * file, const char * sep);
+		static bool isValidFormat(std::string line);
+		static bool isValidValue(std::string line);
 	
 	public:
 		static void getValues(char * file);
