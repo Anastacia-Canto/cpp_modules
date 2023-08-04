@@ -46,11 +46,40 @@ void PmergeMe::checkContainers(void) {
 	std::cout << std::endl;
 }
 
+std::vector<int> PmergeMe::mergeSortVector(std::vector<int> &vec) {
+	
+	if (vec.size() == 2) {
+		return vec;
+	}
+
+	std::vector<int> vec1;
+	std::vector<int> vec2;
+
+	size_t i = 0;
+	while (i < vec.size()) {
+		i % 2 == 0 ? vec1.push_back(vec[i]) : vec2.push_back(vec[i]);
+		i++;
+	}
+
+	mergeSortVector(vec1);
+	mergeSortVector(vec2);
+
+	return mergeVector(vec1, vec2);
+}
+
+std::vector<int> PmergeMe::mergeVector(std::vector<int> &vec1, std::vector<int> &vec2) {
+
+	std::vector<int> sortedish;
+
+	
+}
+
 
 void PmergeMe::sort(char ** input) {
 
 	if (validateAndStore(input)) {
-		checkContainers();
+		// checkContainers();
+		mergeSortVector(_vector);
 		
 	} else {
 		std::cout << "Error" << std::endl;

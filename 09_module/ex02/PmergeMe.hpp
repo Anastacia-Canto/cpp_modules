@@ -21,6 +21,8 @@ class PmergeMe {
 
 		static bool validateAndStore(char ** input);
 		static void checkContainers(void);
+		static std::vector<int> mergeSortVector(std::vector<int> &vec);
+		static std::vector<int> mergeVector(std::vector<int> &vec1, std::vector<int> &vec2);
 	
 
 	public:
