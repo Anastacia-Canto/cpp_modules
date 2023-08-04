@@ -2,7 +2,7 @@
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange(void) {}
-BitcoinExchange::BitcoinExchange(BitcoinExchange const & src) {}
+BitcoinExchange::BitcoinExchange(BitcoinExchange const & src) { *this = src; }
 BitcoinExchange & BitcoinExchange::operator=(BitcoinExchange const & rhs) { return *this; }
 BitcoinExchange::~BitcoinExchange(void) {}
 
