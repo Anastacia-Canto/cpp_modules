@@ -48,38 +48,82 @@ void PmergeMe::checkContainers(void) {
 
 std::vector<int> PmergeMe::mergeSortVector(std::vector<int> &vec) {
 	
-	if (vec.size() == 2) {
-		return vec;
+	int k = vec.size() % 2 == 0 ? vec.size() / 2 : (vec.size() / 2) + 1;
+	std::cout << "k: " << k << std::endl;
+	std::vector<std::vector<int>> pairs;
+	for (int i = 0; i < vec.size(); i += 2) {
+		std::vector<int> pair;
+		pair.push_back(vec[i]);
+		if (i < vec.size() - 1) {
+			pair.push_back(vec[i + 1]);
+		}
+		pairs.push_back(pair);
 	}
 
-	std::vector<int> vec1;
-	std::vector<int> vec2;
+	std::cout << "Pairs: " << std::endl;
+	for (int i = 0; i < pairs.size(); i++) {
+		if (pairs[i].size() == 2) {
+			std::cout << pairs[i][0] << " , " << pairs[i][1] << std::endl;
+		} else {
+			std::cout << pairs[i][0] << std::endl;
+		}
+	}
 
-	size_t i = 0;
-	while (i < vec.size()) {
-		i % 2 == 0 ? vec1.push_back(vec[i]) : vec2.push_back(vec[i]);
+	insertionVector(pairs);
+	std::vector<int> sorted;
+	for (int i = 0; i < pairs.size(); i++) {
+		for (int j = 0; j < pairs[i].size(); j++) {
+			mergeVector(sorted, pairs[i][j]);
+		}
+	}
+	
+	
+	return sorted;
+}
+
+void PmergeMe::insertionVector(std::vector<std::vector<int>> &pairs) {
+	for (int i = 0; i < pairs.size(); i++) {
+		if (pairs[i].size() == 1) {
+			continue ;
+		}
+		else if (pairs[i][0] > pairs[i][1]) {
+			int temp = pairs[i][0];
+			pairs[i][0] = pairs[i][1];
+			pairs[i][1] = temp;
+		}
+		std::cout << "pair after insertion: " << pairs[i][0] << " , " << (pairs[i].size() == 2 ? pairs[i][1] : '0') << std::endl;
+	}
+}
+
+void PmergeMe::mergeVector(std::vector<int> &sorted, int elem) {
+	if (sorted.size() == 0) {
+		sorted.push_back(elem);
+		return ;
+	}
+	std::vector<int>::iterator i = sorted.begin();
+	while (i != sorted.end()) {
+		if (elem < *i) {
+			sorted.insert(i, elem);
+			return ;
+		}
 		i++;
 	}
-
-	mergeSortVector(vec1);
-	mergeSortVector(vec2);
-
-	return mergeVector(vec1, vec2);
-}
-
-std::vector<int> PmergeMe::mergeVector(std::vector<int> &vec1, std::vector<int> &vec2) {
-
-	std::vector<int> sortedish;
-
-	
-}
+	sorted.push_back(elem);
+ }
 
 
 void PmergeMe::sort(char ** input) {
 
 	if (validateAndStore(input)) {
 		// checkContainers();
-		mergeSortVector(_vector);
+		std::vector<int> sorted = mergeSortVector(_vector);
+
+		std::vector<int>::iterator i = sorted.begin();
+		std::cout << "Sorted: " << std::endl;
+		while (i != sorted.end()) {
+			std::cout << *i << std::endl;
+			i++;
+		}
 		
 	} else {
 		std::cout << "Error" << std::endl;
