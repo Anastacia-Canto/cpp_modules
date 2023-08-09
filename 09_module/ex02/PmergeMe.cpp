@@ -46,10 +46,12 @@ void PmergeMe::checkContainers(void) {
 	std::cout << std::endl;
 }
 
+// --------------------------------------------- Vector ----------------------------------------------- //
+
 std::vector<int> PmergeMe::mergeSortVector(std::vector<int> &vec) {
 	
 	int k = vec.size() % 2 == 0 ? vec.size() / 2 : (vec.size() / 2) + 1;
-	std::cout << "k: " << k << std::endl;
+
 	std::vector<std::vector<int>> pairs;
 	for (int i = 0; i < vec.size(); i += 2) {
 		std::vector<int> pair;
@@ -60,15 +62,6 @@ std::vector<int> PmergeMe::mergeSortVector(std::vector<int> &vec) {
 		pairs.push_back(pair);
 	}
 
-	std::cout << "Pairs: " << std::endl;
-	for (int i = 0; i < pairs.size(); i++) {
-		if (pairs[i].size() == 2) {
-			std::cout << pairs[i][0] << " , " << pairs[i][1] << std::endl;
-		} else {
-			std::cout << pairs[i][0] << std::endl;
-		}
-	}
-
 	insertionVector(pairs);
 	std::vector<int> sorted;
 	for (int i = 0; i < pairs.size(); i++) {
@@ -76,7 +69,6 @@ std::vector<int> PmergeMe::mergeSortVector(std::vector<int> &vec) {
 			mergeVector(sorted, pairs[i][j]);
 		}
 	}
-	
 	
 	return sorted;
 }
@@ -91,26 +83,24 @@ void PmergeMe::insertionVector(std::vector<std::vector<int>> &pairs) {
 			pairs[i][0] = pairs[i][1];
 			pairs[i][1] = temp;
 		}
-		std::cout << "pair after insertion: " << pairs[i][0] << " , " << (pairs[i].size() == 2 ? pairs[i][1] : '0') << std::endl;
 	}
 }
 
 void PmergeMe::mergeVector(std::vector<int> &sorted, int elem) {
-	if (sorted.size() == 0) {
-		sorted.push_back(elem);
-		return ;
-	}
-	std::vector<int>::iterator i = sorted.begin();
-	while (i != sorted.end()) {
-		if (elem < *i) {
-			sorted.insert(i, elem);
-			return ;
+	if (sorted.size() > 0) {
+		std::vector<int>::iterator i = sorted.begin();
+		while (i != sorted.end()) {
+			if (elem < *i) {
+				sorted.insert(i, elem);
+				return ;
+			}
+			i++;
 		}
-		i++;
 	}
 	sorted.push_back(elem);
  }
 
+// --------------------------------------------- Vector ----------------------------------------------- //
 
 void PmergeMe::sort(char ** input) {
 
