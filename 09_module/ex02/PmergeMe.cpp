@@ -9,43 +9,6 @@ PmergeMe & PmergeMe::operator=(PmergeMe const & rhs) { return *this; }
 static std::list<int> _list;
 static std::vector<int> _vector;
 
-bool PmergeMe::validateAndStore(char ** input) {
-	int num;
-	int i = 1;
-	while (input[i] != NULL) {
-		if (strncmp(input[i], "0", strlen(input[i])) == 0) {
-			num = 0;
-		} else {
-			num = strtol(input[i], NULL, 10);
-			if (num == 0L || num < 0) {
-				return false ;
-			}
-		}
-		_list.push_back(num);
-		_vector.push_back(num);
-		i++;
-	}
-	
-	return true ;
-}
-
-void PmergeMe::checkContainers(void) {
-	std::vector<int>::iterator vt = _vector.begin();
-	std::cout << "Vector" << std::endl;
-	while (vt != _vector.end()) {
-		std::cout << *vt << " ";
-		vt++;
-	}
-
-	std::list<int>::iterator lt = _list.begin();
-	std::cout << std::endl << "List" << std::endl;
-	while (lt != _list.end()) {
-		std::cout << *lt << " ";
-		lt++;
-	}
-	std::cout << std::endl;
-}
-
 // --------------------------------------------- Vector ----------------------------------------------- //
 
 std::vector<int> PmergeMe::mergeSortVector(std::vector<int> &vec) {
@@ -100,20 +63,59 @@ void PmergeMe::mergeVector(std::vector<int> &sorted, int elem) {
 	sorted.push_back(elem);
  }
 
-// --------------------------------------------- Vector ----------------------------------------------- //
+// --------------------------------------------- List ----------------------------------------------- //
+
+std::list<int> PmergeMe::mergeSortList(std::list<int> &lst) {
+
+}
+// -------------------------------------------------------------------------------------------------- //
+
+bool PmergeMe::validateAndStore(char ** input) {
+	int num;
+	int i = 1;
+	while (input[i] != NULL) {
+		if (strncmp(input[i], "0", strlen(input[i])) == 0) {
+			num = 0;
+		} else {
+			num = strtol(input[i], NULL, 10);
+			if (num == 0L || num < 0) {
+				return false ;
+			}
+		}
+		_list.push_back(num);
+		_vector.push_back(num);
+		i++;
+	}
+	
+	return true ;
+}
 
 void PmergeMe::sort(char ** input) {
+	clock_t durationVector;
+	durationVector = clock();
+	clock_t durationList;
+	durationList = clock();
+	
 
 	if (validateAndStore(input)) {
-		// checkContainers();
-		std::vector<int> sorted = mergeSortVector(_vector);
+		std::vector<int> sortedVector = mergeSortVector(_vector);
+		durationVector = clock() - durationVector;
 
-		std::vector<int>::iterator i = sorted.begin();
-		std::cout << "Sorted: " << std::endl;
-		while (i != sorted.end()) {
-			std::cout << *i << std::endl;
-			i++;
-		}
+		std::list<int> sortedList = mergeSortList(_list);
+		durationList = clock() - durationList;
+
+		std::cout << "Before: ";
+		::printContainers(_vector);
+
+		std::cout << "After: ";
+		::printContainers(sortedVector);
+
+		std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector<int> : "
+		<< static_cast<float>(durationVector)/CLOCKS_PER_SEC  << " seconds" << std::endl;
+
+		std::cout << "Time to process a range of " << _list.size() << " elements with std::list<int> : "
+		<< static_cast<float>(durationList)/CLOCKS_PER_SEC  << " seconds" << std::endl;
+
 		
 	} else {
 		std::cout << "Error" << std::endl;
