@@ -10,10 +10,12 @@
 #include <string.h>
 #include <sys/time.h>
 #include <iomanip>
+#include <algorithm>
+#include <iterator>
 
 template <typename T>
 void printContainers(T &container) {
-	std::vector<int>::iterator i = container.begin();
+	typename T::iterator i = container.begin();
 	for (int k = 0; k < 15; k++) {
 		if (i == container.end()) {
 			break ;
@@ -40,8 +42,9 @@ class PmergeMe {
 
 		static bool validateAndStore(char ** input);
 		static std::vector<int> mergeSortVector(std::vector<int> &vec);
-		static void mergeVector(std::vector<int> &sorted, int elem);
-		static void insertionVector(std::vector<std::vector<int>> &pairs);
+		static std::vector<std::vector<int>> splitVectorPairs(std::vector<int> &vec);
+		static void sortVectorPairs(std::vector<std::vector<int>> &pairs);
+		static std::vector<int> mergeVector(std::vector<std::vector<int>> &pairs);
 
 		static std::list<int> mergeSortList(std::list<int> &lst);
 	
