@@ -115,20 +115,35 @@ std::list<int> PmergeMe::mergeSortList(std::list<int> &lst) {
 
 // -------------------------------------------------------------------------------------------------- //
 
+bool PmergeMe::checkValidCharacters(char ** input, int i) {
+	int j = 0;
+	while (input[i][j]) {
+		if ((!isdigit(input[i][j]) && input[i][j] != '+' && input[i][j] != ' ') || (input[i][j] == '+' && j != 0)) {
+			return false;
+		}
+		j++;
+	}
+	return true;
+}
+
 bool PmergeMe::validateAndStore(char ** input) {
-	int num;
+	long num;
 	int i = 1;
 	while (input[i] != NULL) {
-		if (strncmp(input[i], "0", strlen(input[i])) == 0) {
-			num = 0;
-		} else {
-			num = strtol(input[i], NULL, 10);
-			if (num == 0L || num < 0) {
-				return false ;
+		if (checkValidCharacters(input, i)) {
+			if (strncmp(input[i], "0", strlen(input[i])) == 0) {
+				num = 0;
+			} else {
+				num = strtol(input[i], NULL, 10);
+				if (errno == EINVAL || errno == ERANGE || num == 0L || num > INT_MAX || num < 0) {
+					return false ;
+				}
 			}
+			_list.push_back(num);
+			_vector.push_back(num);
+		} else {
+			return false;
 		}
-		_list.push_back(num);
-		_vector.push_back(num);
 		i++;
 	}
 	

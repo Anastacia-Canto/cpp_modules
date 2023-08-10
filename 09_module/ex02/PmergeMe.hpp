@@ -12,6 +12,8 @@
 #include <iomanip>
 #include <algorithm>
 #include <iterator>
+#include <errno.h>
+#include <limits.h>
 
 template <typename T>
 void printContainers(T &container) {
@@ -41,6 +43,8 @@ class PmergeMe {
 		PmergeMe & operator=(PmergeMe const & rhs);
 
 		static bool validateAndStore(char ** input);
+		static bool checkValidCharacters(char ** input, int i);
+
 		static std::vector<int> mergeSortVector(std::vector<int> &vec);
 		static std::vector<std::vector<int>> splitVectorPairs(std::vector<int> &vec);
 		static void sortVectorPairs(std::vector<std::vector<int>> &pairs);
