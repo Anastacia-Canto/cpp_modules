@@ -40,7 +40,7 @@ void ScavTrap::attack( const std::string& target ) {
 	target << " causing " << this->attackDmg << " points of damage!"<< std::endl;
 }
 
-ScavTrap::ScavTrap( ScavTrap const & src ) {
+ScavTrap::ScavTrap( ScavTrap const & src ) : ClapTrap(src.getName()) {
 	*this = src;
 	std::cout << "ScavTrap " << this->name << " has been copied." << std::endl;
 }

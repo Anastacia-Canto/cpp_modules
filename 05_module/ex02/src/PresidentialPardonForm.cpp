@@ -2,7 +2,7 @@
 #include "../inc/PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm( std::string target ) 
-: _target(target), AForm("PresidentialPardonForm", 25, 5) {
+: AForm("PresidentialPardonForm", 25, 5), _target(target) {
 	std::cout << "Presidential constructor called." << std::endl;
 }
 
@@ -11,7 +11,7 @@ PresidentialPardonForm::~PresidentialPardonForm( void ) {
 }
 
 PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const & src ) 
-: _target(src.getTarget()), AForm("PresidentialPardonForm", 25, 5) {
+: AForm("PresidentialPardonForm", 25, 5), _target(src.getTarget()) {
 	std::cout << "Presidential copy constructor called." << std::endl;
 }
 

@@ -23,7 +23,7 @@ Fixed::Fixed ( const int intNum ) {
 	this->_fixed = intNum << this->_fractional;
 }
 
-Fixed::Fixed ( const float floatNum ) : _fixed(std::roundf(floatNum * (1 << this->_fractional))) {
+Fixed::Fixed ( const float floatNum ) : _fixed(roundf(floatNum * (1 << this->_fractional))) {
 	// std::cout << "Float constructor called" << std::endl;
 }
 

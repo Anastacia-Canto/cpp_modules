@@ -4,17 +4,17 @@
 PmergeMe::PmergeMe(void) {}
 PmergeMe::~PmergeMe(void) {}
 PmergeMe::PmergeMe(PmergeMe const & src) { *this = src; }
-PmergeMe & PmergeMe::operator=(PmergeMe const & rhs) { return *this; }
+PmergeMe & PmergeMe::operator=(PmergeMe const & rhs) { (void)rhs; return *this; }
 
 static std::list<int> _list;
 static std::vector<int> _vector;
 
 // --------------------------------------------- Vector ----------------------------------------------- //
 
-std::vector<std::vector<int>> PmergeMe::splitVectorPairs(std::vector<int> &vec) {
-	std::vector<std::vector<int>> pairs;
+std::vector<std::vector<int> > PmergeMe::splitVectorPairs(std::vector<int> &vec) {
+	std::vector<std::vector<int> > pairs;
 
-	for (int i = 0; i < vec.size(); i += 2) {
+	for (unsigned int i = 0; i < vec.size(); i += 2) {
 		std::vector<int> pair;
 		pair.push_back(vec[i]);
 		if (i < vec.size() - 1) {
@@ -26,17 +26,17 @@ std::vector<std::vector<int>> PmergeMe::splitVectorPairs(std::vector<int> &vec) 
 	return pairs;
 }
 
-void PmergeMe::sortVectorPairs(std::vector<std::vector<int>> &pairs) {
-	for (int i = 0; i < pairs.size(); i++) {
+void PmergeMe::sortVectorPairs(std::vector<std::vector<int> > &pairs) {
+	for (unsigned int i = 0; i < pairs.size(); i++) {
 		std::sort(pairs[i].begin(), pairs[i].end());
 	}
 }
 
-std::vector<int> PmergeMe::mergeVector(std::vector<std::vector<int>> &pairs) {
+std::vector<int> PmergeMe::mergeVector(std::vector<std::vector<int> > &pairs) {
 	
 	std::vector<int> sorted;
-	for (int i = 0; i < pairs.size(); i++) {
-		for (int j = 0; j < pairs[i].size(); j++) {
+	for (unsigned int i = 0; i < pairs.size(); i++) {
+		for (unsigned int j = 0; j < pairs[i].size(); j++) {
 			sorted.insert(lower_bound(sorted.begin(), sorted.end(), pairs[i][j]), pairs[i][j]);
 		}
 	}
@@ -46,7 +46,7 @@ std::vector<int> PmergeMe::mergeVector(std::vector<std::vector<int>> &pairs) {
 
 std::vector<int> PmergeMe::mergeSortVector(std::vector<int> &vec) {
 
-	std::vector<std::vector<int>> pairs = splitVectorPairs(vec);
+	std::vector<std::vector<int> > pairs = splitVectorPairs(vec);
 	sortVectorPairs(pairs);
 	
 	return mergeVector(pairs);
@@ -56,8 +56,8 @@ std::vector<int> PmergeMe::mergeSortVector(std::vector<int> &vec) {
 
 // --------------------------------------------- List ----------------------------------------------- //
 
-std::list<std::list<int>> splitListPairs(std::list<int> &lst) {
-	std::list<std::list<int>> outerList;
+std::list<std::list<int> > splitListPairs(std::list<int> &lst) {
+	std::list<std::list<int> > outerList;
 	std::list<int>::iterator it = lst.begin();
 
 	while (it != lst.end()) {
@@ -70,7 +70,7 @@ std::list<std::list<int>> splitListPairs(std::list<int> &lst) {
 			innerList.push_back(*it);
 			it++;
 		} else {
-			std::prev(it);
+			std::advance(it, -1);
 			innerList.push_back(*it);
 			std::advance(it, 2);
 		}
@@ -80,8 +80,8 @@ std::list<std::list<int>> splitListPairs(std::list<int> &lst) {
 	return outerList;
 }
 
-void sortListPairs(std::list<std::list<int>> & outerList) {
-	std::list<std::list<int>>::iterator out = outerList.begin();
+void sortListPairs(std::list<std::list<int> > & outerList) {
+	std::list<std::list<int> >::iterator out = outerList.begin();
 	while (out != outerList.end()) {
 		std::list<int> inner = *out;
 		inner.sort();
@@ -89,9 +89,9 @@ void sortListPairs(std::list<std::list<int>> & outerList) {
 	}
 }
 
-std::list<int> mergeList(std::list<std::list<int>> & outerList) {
+std::list<int> mergeList(std::list<std::list<int> > & outerList) {
 	std::list<int> sorted;
-	std::list<std::list<int>>::iterator out = outerList.begin();
+	std::list<std::list<int> >::iterator out = outerList.begin();
 	while (out != outerList.end()) {
 		std::list<int> &innerPointer = *out;
 		std::list<int>::iterator inner = innerPointer.begin();
@@ -107,7 +107,7 @@ std::list<int> mergeList(std::list<std::list<int>> & outerList) {
 
 std::list<int> PmergeMe::mergeSortList(std::list<int> &lst) {
 
-	std::list<std::list<int>> outerList = splitListPairs(lst);
+	std::list<std::list<int> > outerList = splitListPairs(lst);
 	sortListPairs(outerList);
 	
 	return mergeList(outerList);

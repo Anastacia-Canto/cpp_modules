@@ -1,5 +1,7 @@
 
 #include <iostream>
+#include <cstdlib>
+#include <time.h>
 #include "Array.hpp"
 
 #define MAX_VAL 750
@@ -7,7 +9,7 @@ int main(void)
 {
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
-    srand(time(NULL));
+    srand(time(0));
     for (int i = 0; i < MAX_VAL; i++)
     {
         const int value = rand();
@@ -29,6 +31,8 @@ int main(void)
             return 1;
         }
     }
+
+    std::cout << "Index 42:\nnumbers: " << numbers[42] << "\nmirror: " << mirror[42] << std::endl;
     try
     {
         numbers[-2] = 0;
@@ -50,6 +54,8 @@ int main(void)
     {
         numbers[i] = rand();
     }
+
+    std::cout << "After changing numbers:\nIndex 42:\nnumbers: " << numbers[42] << "\nmirror: " << mirror[42] << std::endl;
     delete [] mirror;
     return 0;
 }

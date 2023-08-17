@@ -30,7 +30,7 @@ ScavTrap::~ScavTrap( void ) {
     std::cout << "ScavTrap " << this->name << " was destroyed." << std::endl;
 }
 
-ScavTrap::ScavTrap( ScavTrap const & src ) {
+ScavTrap::ScavTrap( ScavTrap const & src ) : ClapTrap(src.getName()) {
 	*this = src;
 	std::cout << "ScavTrap " << this->name << " has been copied." << std::endl;
 }

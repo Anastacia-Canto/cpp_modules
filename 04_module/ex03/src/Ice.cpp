@@ -9,12 +9,13 @@ Ice::~Ice( void ) {
 	std::cout << "Ice destructor called." << std::endl;
 }
 
-Ice::Ice( Ice const & src ) : AMateria(src) {
+Ice::Ice( Ice const & src ) : AMateria(src.getType()) {
 	*this = src;
 	std::cout << "Ice copy constructor called." << std::endl;
 }
 
 Ice & Ice::operator=( Ice const & rhs ) {
+	this->_type = rhs.getType();
 	return *this;
 }
 

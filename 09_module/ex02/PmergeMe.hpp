@@ -46,9 +46,9 @@ class PmergeMe {
 		static bool checkValidCharacters(char ** input, int i);
 
 		static std::vector<int> mergeSortVector(std::vector<int> &vec);
-		static std::vector<std::vector<int>> splitVectorPairs(std::vector<int> &vec);
-		static void sortVectorPairs(std::vector<std::vector<int>> &pairs);
-		static std::vector<int> mergeVector(std::vector<std::vector<int>> &pairs);
+		static std::vector<std::vector<int> > splitVectorPairs(std::vector<int> &vec);
+		static void sortVectorPairs(std::vector<std::vector<int> > &pairs);
+		static std::vector<int> mergeVector(std::vector<std::vector<int> > &pairs);
 
 		static std::list<int> mergeSortList(std::list<int> &lst);
 	

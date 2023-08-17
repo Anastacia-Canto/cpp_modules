@@ -17,7 +17,7 @@ std::string	megaphone(char *word) {
 	char	ch;
 	std::string	str;
 
-	for (int i = 0; i < strlen(word); i++){
+	for (unsigned int i = 0; i < strlen(word); i++){
 		if (word[i] != ' '){
 			ch = (char) toupper(word[i]);
 			str.insert(str.end(), ch);

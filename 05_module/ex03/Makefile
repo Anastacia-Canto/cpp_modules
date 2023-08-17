@@ -7,16 +7,16 @@ SRC = ./src/main ./src/Bureaucrat ./src/AForm\
 
 INC = -I ./inc
 
-CC = c++
+CXX = c++
 
-CFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98 -fsanitize=address
+CXXFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98 -fsanitize=address
 
 RM = rm -fr
 
 all: $(NAME)
 
 $(NAME): $(SRC:=.o)
-	$(CC) $(CFLAGS) $(INC) $(SRC:=.o) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(INC) $(SRC:=.o) -o $(NAME)
 
 clean:
 	$(RM) $(NAME) $(SRC:=.o)

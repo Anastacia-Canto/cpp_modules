@@ -16,7 +16,7 @@ Span & Span::operator=(Span const & rhs) {
 	_max = rhs.getMax();
 	_amount = rhs.getAmount();
 	_myInts.resize(_amount);
-	for (int i = 0; i < _amount; i++) {
+	for (unsigned int i = 0; i < _amount; i++) {
 		_myInts[i] = rhs.getVector()[i];
 	}
 

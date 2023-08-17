@@ -16,16 +16,16 @@ NAME = megaphone
 
 SRC = megaphone
 
-CC = c++
+CXX = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -fr
 
 all: $(NAME)
 
 $(NAME): $(SRC:=.o)
-	$(CC) $(CFLAGS) $(SRC:=.o) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRC:=.o) -o $(NAME)
 
 clean:
 	$(RM) $(NAME) $(SRC:=.o)

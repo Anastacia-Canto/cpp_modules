@@ -19,10 +19,10 @@
 class ClapTrap {
 	
 	private:
-		std::string _name;
-		int			_hitPts;
-		int			_energyPts;
-		int			_attackDmg;
+		std::string 	_name;
+		unsigned int	_hitPts;
+		unsigned int	_energyPts;
+		unsigned int	_attackDmg;
 		
 
 

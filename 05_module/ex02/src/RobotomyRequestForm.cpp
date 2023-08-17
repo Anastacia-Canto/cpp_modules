@@ -2,7 +2,7 @@
 #include "../inc/RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm( std::string target ) 
-: _target(target), AForm("RobotomyRequestForm", 72, 45) {
+: AForm("RobotomyRequestForm", 72, 45), _target(target) {
 	std::cout << "Robotomy constructor called." << std::endl;
 }
 
@@ -11,7 +11,7 @@ RobotomyRequestForm::~RobotomyRequestForm( void ) {
 }
 
 RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const & src ) 
-: _target(src.getTarget()), AForm("RobotomyRequestForm", 72, 45) {
+: AForm("RobotomyRequestForm", 72, 45), _target(src.getTarget()) {
 	std::cout << "Robotomy copy constructor called." << std::endl;
 }
 

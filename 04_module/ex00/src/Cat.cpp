@@ -9,13 +9,13 @@ Cat::~Cat( void ) {
     std::cout << "Cat destructor called." << std::endl;
 }
 
-Cat::Cat( Cat const & src ) : Animal(src) {
+Cat::Cat( Cat const & src ) : Animal(src.getType()) {
    *this = src;
    std::cout << "Cat copy constructor called." << std::endl;
 }
 
 Cat & Cat::operator=( Cat const & rhs ) {
-   this->type = rhs.getType();
+   this->_type = rhs.getType();
     return *this;
 }
 

@@ -4,15 +4,21 @@
 RPN::RPN(void) {}
 RPN::~RPN(void) {}
 RPN::RPN(RPN const & src) { *this = src; }
-RPN & RPN::operator=(RPN const & rhs) { return *this; }
+RPN & RPN::operator=(RPN const & rhs) { (void)rhs; return *this; }
 
 bool RPN::checkInput(char * input) {
 
 	std::string testInput(input);
-	int countErrors = std::count_if(testInput.begin(), testInput.end(), [](unsigned char c) {
-		return isdigit(c) == 0 && c != '+' && c != '-' && c != '*' && c != '/' && c != ' ';
+	int countErrors = 0;
+
+	const char * ctestInput = testInput.c_str();
+	for (unsigned int i = 0; i < testInput.length(); i++) {
+		if (isdigit(ctestInput[i]) == 0 && ctestInput[i] != '+' 
+			&& ctestInput[i] != '-' && ctestInput[i] != '*' 
+			&& ctestInput[i] != '/' && ctestInput[i] != ' ') {
+			countErrors++;
 		}
-	);
+	}
 
 	if (countErrors > 0) {
 		std::cout << "Error" << std::endl;

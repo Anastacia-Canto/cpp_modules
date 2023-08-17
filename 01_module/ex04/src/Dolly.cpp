@@ -19,11 +19,11 @@ Dolly::Dolly( std::string filename ) :_source(filename){
 Dolly::~Dolly( void ){}
 
 void	Dolly::replace( std::string oldStr, std::string newStr ){
-	std::ifstream src(this->_source);
+	std::ifstream src(this->_source.c_str(), std::ifstream::in);
 	if (src.is_open()){
 		std::string line;
 
-		std::ofstream cpy(this->_mycopy);
+		std::ofstream cpy(this->_mycopy.c_str(), std::ofstream::out);
 
 		while (std::getline(src, line)){
 			std::size_t found = line.find(oldStr);

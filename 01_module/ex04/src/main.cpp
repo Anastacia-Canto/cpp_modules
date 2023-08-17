@@ -19,7 +19,7 @@ void	test_prog( std::string filename, std::string s1, std::string s2){
 	std::string cpyName = filename;
 	cpyName += ".replace";
 	
-	std::ifstream cpy(cpyName);
+	std::ifstream cpy(cpyName.c_str(), std::ifstream::in);
 	
 	if (cpy.is_open()){
 		

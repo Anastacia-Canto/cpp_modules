@@ -16,7 +16,7 @@ class Array {
 	public:
 		Array(void) {
 			_size = 0;
-			_myArr = new T();
+			_myArr = new T[0];
 		}
 
 		Array(unsigned int n) {

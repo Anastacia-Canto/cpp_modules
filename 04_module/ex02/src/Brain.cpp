@@ -16,7 +16,7 @@ Brain::Brain( Brain const & src ) {
 }
 
 Brain & Brain::operator=( Brain const & rhs ) {
-	for ( int i = 0; i < this->_ideas->size(); i++) {
+	for (unsigned int i = 0; i < this->_ideas->size(); i++) {
 		this->_ideas[i] = rhs.getIdeas(i);
 	}
 	std::cout << "Brain assignment operator called." << std::endl;

@@ -11,15 +11,14 @@ Dog::~Dog( void ) {
     std::cout << "Dog destructor called." << std::endl;
 }
 
-Dog::Dog( Dog const & src ) : Animal(src) {
-    this->type = "Dog";
+Dog::Dog( Dog const & src ) : Animal(src.getType()) {
     this->_brain = new Brain();
     *this = src;
     std::cout << "Dog copy constructor called." << std::endl;
 }
 
 Dog & Dog::operator=( Dog const & rhs ) {
-    this->type = rhs.getType();
+    this->_type = rhs.getType();
     *this->_brain = rhs.getBrain();
     return *this;
 }

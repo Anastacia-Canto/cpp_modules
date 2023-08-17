@@ -23,7 +23,7 @@ int	main(){
 		std::cout << "Do you wanna ADD, SEARCH or EXIT" << std::endl;
 		std::cin >> command;
 
-		for (int i = 0; i < command.length(); i++){
+		for (unsigned int i = 0; i < command.length(); i++){
 			if (islower(command[i]))
 				command[i] = toupper(command[i]);
 		}

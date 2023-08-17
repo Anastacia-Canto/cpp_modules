@@ -17,6 +17,7 @@ Intern::Intern( Intern const & src ) {
 }
 
 Intern & Intern::operator=( Intern const & rhs ) {
+    (void)rhs;
     return *this;
 }
 
@@ -37,11 +38,11 @@ const char * Intern::NotFoundException::what() const throw() {
 }
 
 AForm* Intern::makeForm( std::string form, std::string target ) {
-    std::string forms[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
+    std::string standardForms[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
     int i = 0;
 
     while (i < 3) {
-        if (!form.compare(forms[i])) {
+        if (!form.compare(standardForms[i])) {
             break ;
         }
         i++;
@@ -52,7 +53,7 @@ AForm* Intern::makeForm( std::string form, std::string target ) {
         return NULL;
     }
     
-    std::cout << "Intern creates " << forms[i] << std::endl;
+    std::cout << "Intern creates " << standardForms[i] << std::endl;
     return ((this->*Intern::forms[i])(target));
    
 }

@@ -2,12 +2,12 @@
 #include "../inc/Animal.hpp"
 
 Animal::Animal( void ) {
-	this->type = "Animal";
+	this->_type = "Animal";
     std::cout << "Animal default constructor called." << std::endl;
 }
 
-Animal::Animal( std::string type ) : type(type) {
-    std::cout << "Animal constructor called with type " << this->type << std::endl;
+Animal::Animal( std::string type ) : _type(type) {
+    std::cout << "Animal constructor called with type " << this->_type << std::endl;
 }
 
 Animal::~Animal( void ) {
@@ -21,7 +21,7 @@ Animal::Animal( Animal const & src ) {
 
 Animal & Animal::operator=( Animal const & rhs ) {
     std::cout << "Animal assignment operator called." << std::endl;
-    this->type = rhs.getType();
+    this->_type = rhs.getType();
     return *this;
 }
 
@@ -30,7 +30,7 @@ void Animal::makeSound( void ) const {
 }
 
 std::string Animal::getType( void ) const {
-    return this->type;
+    return this->_type;
 }
 
 void Animal::openBrain( Brain & brain ) const {

@@ -2,12 +2,12 @@
 #include "../inc/AMateria.hpp"
 
 AMateria::AMateria( void ) {
-	this->type = "";
+	this->_type = "";
 	std::cout << "AMateria default constructor called." << std::endl;
 }
 
-AMateria::AMateria( std::string const & type ) : type(type) {
-	std::cout << "AMateria constructor receiving " << this->type << " as parameter." << std::endl;
+AMateria::AMateria( std::string const & type ) : _type(type) {
+	std::cout << "AMateria constructor receiving " << this->_type << " as parameter." << std::endl;
 }
 
 AMateria::~AMateria( void ) {
@@ -19,10 +19,10 @@ AMateria::AMateria( AMateria const & src ) {
 }
 
 AMateria & AMateria::operator=( AMateria const & rhs ) {
-	this->type = rhs.getType();
+	this->_type = rhs.getType();
 	return *this;
 }
 
 std::string const & AMateria::getType() const {
-	return this->type;
+	return this->_type;
 }

@@ -11,15 +11,14 @@ Cat::~Cat( void ) {
     std::cout << "Cat destructor called." << std::endl;
 }
 
-Cat::Cat( Cat const & src ) : Animal(src) {
-    this->type = "Cat";
+Cat::Cat( Cat const & src ) : Animal(src.getType()) {
     this->_brain = new Brain();
    *this = src;
    std::cout << "Cat copy constructor called." << std::endl;
 }
 
 Cat & Cat::operator=( Cat const & rhs ) {
-    this->type = rhs.getType();
+    this->_type = rhs.getType();
     *this->_brain = rhs.getBrain();
     return *this;
 }

@@ -1,7 +1,7 @@
 
 #include "../inc/ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm( std::string target ) : _target(target), AForm("ShrubberyCreationForm", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm( std::string target ) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {
 	std::cout << "Shrubbery constructor called." << std::endl;
 }
  
@@ -10,7 +10,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm( void ) {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & src ) 
-: _target(src.getTarget()), AForm("ShrubberyCreationForm", src.getGradeSign(), src.getGradeExecute()) {
+: AForm("ShrubberyCreationForm", src.getGradeSign(), src.getGradeExecute()), _target(src.getTarget()) {
 	std::cout << "Shrubbery copy constructor called." << std::endl;
 }
 
@@ -29,7 +29,7 @@ void ShrubberyCreationForm::execute( Bureaucrat const & executor ) const {
 
 		std::string fileName = this->_target + "_shrubbery.txt";
 
-		std::ofstream file(fileName);
+		std::ofstream file(fileName.c_str());
 
 		file << "                                  # #### ####" << std::endl;
 		file << "                                ### v/#|### |/####" << std::endl;

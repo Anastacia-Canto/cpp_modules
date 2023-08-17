@@ -3,7 +3,7 @@
 
 BitcoinExchange::BitcoinExchange(void) {}
 BitcoinExchange::BitcoinExchange(BitcoinExchange const & src) { *this = src; }
-BitcoinExchange & BitcoinExchange::operator=(BitcoinExchange const & rhs) { return *this; }
+BitcoinExchange & BitcoinExchange::operator=(BitcoinExchange const & rhs) { (void)rhs; return *this; }
 BitcoinExchange::~BitcoinExchange(void) {}
 
 std::map<std::string, double> BitcoinExchange::getData(const char * file, const char * sep) {
@@ -20,7 +20,8 @@ std::map<std::string, double> BitcoinExchange::getData(const char * file, const 
 		std::string key = line.substr(0, pos);
 		std::string stringValue = line.substr(pos + 1);
 		double value = std::strtod(stringValue.c_str(), NULL);
-		dataMap.insert({ key, value });
+		// dataMap.insert({ key, value });
+		dataMap[key] = value;
 	}
 	data.close();
 
@@ -29,13 +30,17 @@ std::map<std::string, double> BitcoinExchange::getData(const char * file, const 
 
 bool BitcoinExchange::isValidFormat(std::string line) {
 	std::string date = line.substr(0, 10);
-	int countErrors = std::count_if(date.begin(), date.end(), [](unsigned char c) {
-		return std::isdigit(c) == 0 && c != '-';
+
+	const char * cdate = date.c_str();
+	int countErrors = 0;
+	for (int i = 0; i < 10; i++) {
+		if (std::isdigit(cdate[i]) == 0 && cdate[i] != '-') {
+			countErrors++;
 		}
-	);
+	}
 
 	struct tm result;
-	if (countErrors > 0 || !strptime(line.substr(0, 10).c_str(), "%Y-%m-%d", &result) || line.compare(10, 3, " | ") != 0 || line.substr(13).empty()) {
+	if (countErrors > 0 || !strptime(cdate, "%Y-%m-%d", &result) || line.compare(10, 3, " | ") != 0 || line.substr(13).empty()) {
 		std::cout << "Error: bad input => " << line  << std::endl;
 		return false;
 	}
@@ -44,10 +49,14 @@ bool BitcoinExchange::isValidFormat(std::string line) {
 
 bool BitcoinExchange::isValidValue(std::string line) {
 	std::string value = line.substr(13);
-	int countErrors = std::count_if(value.begin(), value.end(), [](unsigned char c) {
-		return std::isdigit(c) == 0 && c != '-' && c != '+' && c != '.';
+
+	const char * cvalue = value.c_str();
+	int countErrors = 0;
+	for (unsigned int i = 0; i < value.length(); i++) {
+		if (std::isdigit(cvalue[i]) == 0 && cvalue[i] != '-' && cvalue[i] != '+' && cvalue[i] != '.') {
+			countErrors++;
 		}
-	);
+	}
 
 	if (countErrors > 0) {
 		std::cout << "Error: bad input => " << line  << std::endl;

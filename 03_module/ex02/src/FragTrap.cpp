@@ -30,7 +30,7 @@ FragTrap::~FragTrap( void ) {
     std::cout << "FragTrap " << this->name << " was destroyed." << std::endl;
 }
 
-FragTrap::FragTrap( FragTrap const & src ) {
+FragTrap::FragTrap( FragTrap const & src ) : ClapTrap(src.getName()) {
 	*this = src;
 	std::cout << "FragTrap " << this->name << " has been copied." << std::endl;
 }
