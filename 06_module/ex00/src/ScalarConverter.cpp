@@ -30,21 +30,22 @@ std::string ScalarConverter::setType( std::string literal ) {
 		type = "char";
 	} else {
 		int dot = 0, f = 0;
-		for (; i < literal.length(); i++) {
+		for (unsigned int j = i; j < literal.length(); j++) {
+			i = j;
 			if (
-				(i > 0 && !isdigit(literal[i]) && literal[i] != '.' && literal[i] != 'f')
-				|| (i == 0 && literal[i] != '+' && literal[i] != '-' && !isdigit(literal[i]))
-				|| (literal[i] == '.' && i == literal.length() - 1)
-				|| (literal[i] == 'f' && i < literal.length() - 1)
+				(j > 0 && !isdigit(literal[j]) && literal[j] != '.' && literal[j] != 'f')
+				|| (j == 0 && literal[j] != '+' && literal[j] != '-' && !isdigit(literal[j]))
+				|| (literal[j] == '.' && j == literal.length() - 1)
+				|| (literal[j] == 'f' && j < literal.length() - 1)
 				) {
 				std::cout << "Invalid value." << std::endl;
 				return type;
 			}
-			if (literal[i] == '.') {
+			if (literal[j] == '.') {
 				dot++;
 				continue ;
 			}
-			if (literal[i] == 'f') {
+			if (literal[j] == 'f') {
 				f++;
 			}
 		}
@@ -65,7 +66,7 @@ std::string ScalarConverter::setType( std::string literal ) {
 int ScalarConverter::checkLimits( std::string literal ) {
 
 	if (((literal[0] == '+' || literal[0] == '-') && literal.length() > 11) 
-		|| (!literal[0] == '+' && !literal[0] == '-' && literal.length() > 10)
+		|| (literal[0] != '+' && literal[0] != '-' && literal.length() > 10)
 		|| (literal.length() == 10 && literal.compare("2147483647") > 0)
 		|| (literal.length() == 11 && literal[0] == '+' && literal.compare("+2147483647") > 0)
 		|| (literal.length() == 11 && literal[0] == '-' && literal.compare("-2147483648") > 0)) {
@@ -124,7 +125,7 @@ void ScalarConverter::engine( float literal ) {
 		std::cout << "char: " << static_cast<char>(literal) << std::endl;
 	}
 	std::cout << "int: ";
-	if (literal < std::numeric_limits<int>::lowest() || literal > std::numeric_limits<int>::max()) {
+	if (literal < std::numeric_limits<int>::min() || literal > std::numeric_limits<int>::max()) {
 		std::cout << "impossible" << std::endl;
 	} else {
 		std::cout << static_cast<int>(literal) << std::endl;
@@ -142,13 +143,13 @@ void ScalarConverter::engine( double literal ) {
 		std::cout << "char: " << static_cast<char>(literal) << std::endl;
 	}
 	std::cout << "int: ";
-	if (literal < std::numeric_limits<int>::lowest() || literal > std::numeric_limits<int>::max()) {
+	if (literal < std::numeric_limits<int>::min() || literal > std::numeric_limits<int>::max()) {
 		std::cout << "impossible" << std::endl;
 	} else {
 		std::cout << static_cast<int>(literal) << std::endl;
 	}
 	std::cout << "float: ";
-	if (literal < std::numeric_limits<float>::lowest() || literal > std::numeric_limits<float>::max()) {
+	if (literal < std::numeric_limits<float>::min() || literal > std::numeric_limits<float>::max()) {
 		std::cout << "impossible" << std::endl;
 	} else {
 		std::cout << static_cast<float>(literal) << (literal == static_cast<int>(literal) ? ".0" : "") << "f" << std::endl;
