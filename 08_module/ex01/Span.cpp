@@ -2,7 +2,6 @@
 #include "Span.hpp"
 
 Span::Span(unsigned int n) : _max(n) {
-	_myInts.resize(_max);
 	_amount = 0;
 }
 
@@ -55,9 +54,12 @@ int Span::shortestSpan(void) {
 		throw SpanException("Too few elements!");
 	}
 
+	// creating a corted copy of the vector to compare elements in ascending order
 	std::vector<int> sorted(_myInts.begin(), _myInts.end());
 	std::sort (sorted.begin(), sorted.end());
-	std::vector<int> diff(sorted);
+	// creating a vector to sotre the differences between elements
+	size_t len = sorted.size();
+	std::vector<int> diff(len, 0);
 	std::adjacent_difference(sorted.begin(), sorted.end(), diff.begin());
 	int shortSpan = *std::min_element(diff.begin(), diff.end());
 

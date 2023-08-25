@@ -6,6 +6,7 @@
 #include <string>
 #include <exception>
 #include <algorithm>
+#include <typeinfo>
 
 class NotFound : public std::exception {
 	public:
@@ -16,7 +17,13 @@ class NotFound : public std::exception {
 
 template <typename T>
 void easyfind(T container, int target) {
-	
+
+	if(typeid(target).name() != typeid(*container.begin()).name()) {
+		std::cout << "Container should have integers" << std::endl;
+		return ;
+	}
+
+
 	typename T::iterator it;
 
 	it = std::find(container.begin(), container.end(), target);

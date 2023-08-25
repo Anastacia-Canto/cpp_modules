@@ -6,7 +6,10 @@
 int main(void) {
 
 	int myInts [] = {3, 7, 9, 2, 5};
-	std::vector<int> myVectorInts(myInts, myInts + (sizeof(myInts) / sizeof(int)));
+	std::vector<int> myVectorInts;
+	for (size_t i = 0; i < (sizeof(myInts)/sizeof(int)); i++) {
+		myVectorInts.push_back(myInts[i]);
+	}
 	
 	std::list<int> myListInts;
 	for (int i = 0; i < 10; i++) {
@@ -15,7 +18,7 @@ int main(void) {
 	
 	try {
 		std::cout << "testing vector: " << std::endl;
-		::easyfind(myVectorInts, 10);
+		::easyfind(myVectorInts, 15);
 
 	} catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
