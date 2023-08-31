@@ -42,7 +42,8 @@ class PmergeMe {
 		PmergeMe(PmergeMe const & src);
 		PmergeMe & operator=(PmergeMe const & rhs);
 
-		static bool validateAndStore(char ** input);
+		static bool validate(char ** input);
+		static void store(char ** input, int flag);
 		static bool checkValidCharacters(char ** input, int i);
 
 		static std::vector<int> mergeSortVector(std::vector<int> &vec);

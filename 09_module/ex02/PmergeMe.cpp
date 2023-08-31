@@ -126,21 +126,15 @@ bool PmergeMe::checkValidCharacters(char ** input, int i) {
 	return true;
 }
 
-bool PmergeMe::validateAndStore(char ** input) {
+bool PmergeMe::validate(char ** input) {
 	long num;
 	int i = 1;
 	while (input[i] != NULL) {
 		if (checkValidCharacters(input, i)) {
-			if (strncmp(input[i], "0", strlen(input[i])) == 0) {
-				num = 0;
-			} else {
-				num = strtol(input[i], NULL, 10);
-				if (errno == EINVAL || errno == ERANGE || num == 0L || num > INT_MAX || num < 0) {
-					return false ;
-				}
+			num = strtol(input[i], NULL, 10);
+			if ((strncmp(input[i], "0", strlen(input[i])) != 0) && (errno == EINVAL || errno == ERANGE || num == 0L || num > INT_MAX || num < 0)) {
+				return false ;
 			}
-			_list.push_back(num);
-			_vector.push_back(num);
 		} else {
 			return false;
 		}
@@ -150,19 +144,35 @@ bool PmergeMe::validateAndStore(char ** input) {
 	return true ;
 }
 
-void PmergeMe::sort(char ** input) {
-	clock_t durationVector;
-	durationVector = clock();
-	clock_t durationList;
-	durationList = clock();
-	
+void PmergeMe::store(char ** input, int flag) {
+	// it considers flag = 1 to vector and flag = 0 to list
+	int i = 0;
+	while (input[i] != NULL) {
+		if (strncmp(input[i], "0", strlen(input[i])) == 0) {
+			flag == 1 ? _vector.push_back(0) : _list.push_back(0);
+		} else {
+			flag == 1 ? _vector.push_back(strtol(input[i], NULL, 10)) : _list.push_back(strtol(input[i], NULL, 10));
+		}
+		i++;
+	}
+}
 
-	if (validateAndStore(input)) {
+void PmergeMe::sort(char ** input) {
+
+	if (validate(input)) {
+		clock_t durationVector;
+		durationVector = clock();
+		store(input, 1);
 		std::vector<int> sortedVector = mergeSortVector(_vector);
 		durationVector = clock() - durationVector;
 
+		clock_t durationList;
+		durationList = clock();
+		store(input, 0);
 		std::list<int> sortedList = mergeSortList(_list);
 		durationList = clock() - durationList;
+
+
 
 		// std::cout << "Is vector sorted? " << std::is_sorted(_vector.begin(), _vector.end()) << std::endl;
 		// std::cout << "Is list sorted? " << std::is_sorted(_list.begin(), _list.end()) << std::endl;
