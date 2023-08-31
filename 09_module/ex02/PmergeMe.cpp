@@ -146,7 +146,7 @@ bool PmergeMe::validate(char ** input) {
 
 void PmergeMe::store(char ** input, int flag) {
 	// it considers flag = 1 to vector and flag = 0 to list
-	int i = 0;
+	int i = 1;
 	while (input[i] != NULL) {
 		if (strncmp(input[i], "0", strlen(input[i])) == 0) {
 			flag == 1 ? _vector.push_back(0) : _list.push_back(0);
